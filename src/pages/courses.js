@@ -1,12 +1,8 @@
 import React from "react"
 import { graphql, StaticQuery, Link } from "gatsby"
-import moment from 'moment'
 
 import Layout from "../components/layout"
-// import Image from "../components/image"
 import SEO from "../components/seo"
-import defaultImg from "./../images/placeholder.png"
-import CoursesImage from "./../components/atoms/coursesImage"
 import CoursesListBlock from "./../components/molecules/coursesListBlock"
 
 const getEventsData = graphql`
@@ -42,6 +38,7 @@ const getEventsData = graphql`
           zip
           end_time
           start_time
+          geojson
         }
         html
         excerpt(format: PLAIN, pruneLength: 500)
@@ -64,32 +61,30 @@ const EventsPage = () => {
       <StaticQuery
         query={getEventsData}
         render={data => (
-          <div className="event">
+          <div className="events-list">
             {data.allMarkdownRemark.edges
               // Filter all entries *ahead of* today.
               .filter(({node}) => { return new Date(node.frontmatter.start_date) >= new Date() })
               .map(({node}) => (
-                <CoursesListBlock node={node} />
+                <CoursesListBlock node={node} key={node.id} />
             ))}
           </div>
-        )
-        }
+        )}
       />
 
       <h3>Past Courses</h3>
       <StaticQuery
         query={getEventsData}
         render={data => (
-          <div className="event">
+          <div className="events-list">
             {data.allMarkdownRemark.edges
               // Filter all entries *past* today.
               .filter(({node}) => { return new Date(node.frontmatter.start_date) < new Date() })
               .map(({node}) => (
-                <CoursesListBlock node={node} />
+                <CoursesListBlock node={node} key={node.id} />
             ))}
           </div>
-        )
-        }
+        )}
       />
       <Link to="/page-2/">Go to page 2</Link>
     </Layout>
