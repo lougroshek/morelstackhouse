@@ -1,7 +1,7 @@
-const { path } = require(`path`)
+// const { path } = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
-
-const EventTemplate = path.resolve('./src/templates/event-template.js')
+// console.log('path, ', path)
+const EventTemplate = require.resolve(`./src/templates/eventTemplate.js`) // path.resolve([`src/templates/eventTemplate.js`])
 
 // Creates file paths for events based off of markdown files
 exports.onCreateNode = ({ node, getNode, actions }) => {
@@ -20,20 +20,22 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const result = await graphql(`
-allMarkdownRemark(filter: {frontmatter: {type: {eq: "event"}}}) {
-  edges {
-    node {
-      fields {
-        slug
+    query {
+      allMarkdownRemark(filter: {frontmatter: {type: {eq: "event"}}}) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
       }
-    }
-  }
-}`)
+    }`)
 
   const events = result.data.allMarkdownRemark.edges
   events.forEach(({ node: event }) => {
     createPage({
-      path: `events{event.fields.slug}`,
+      path: `events${event.fields.slug}`,
       component: EventTemplate,
       context: {
         slug: event.fields.slug
@@ -43,14 +45,14 @@ allMarkdownRemark(filter: {frontmatter: {type: {eq: "event"}}}) {
 }
 
 // Creates file paths for blog posts based off of markdown files
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
-  if (node.internal.type === "MarkdownRemark" && node.frontmatter.type === "post") {
-    const slug = createFilePath({ node, getNode, basePath: 'posts'})
-    createNodeField({
-      node,
-      name: 'slug',
-      value: slug
-    })
-  }
-}
+// exports.onCreateNode = ({ node, getNode, actions }) => {
+//   const { createNodeField } = actions
+//   if (node.internal.type === "MarkdownRemark" && node.frontmatter.type === "post") {
+//     const slug = createFilePath({ node, getNode, basePath: 'posts'})
+//     createNodeField({
+//       node,
+//       name: 'slug',
+//       value: slug
+//     })
+//   }
+// }
