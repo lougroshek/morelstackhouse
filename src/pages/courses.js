@@ -39,6 +39,7 @@ const getEventsData = graphql`
           end_time
           start_time
           geojson
+          excerpt
         }
         html
         excerpt(format: PLAIN, pruneLength: 500)

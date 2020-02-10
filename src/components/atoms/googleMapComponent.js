@@ -13,7 +13,6 @@ const GoogleMapComponent = ({input}) => {
       lat: json.coordinates[1],
       lng: json.coordinates[0]
     }
-    console.log(position)
     return position
   }
 

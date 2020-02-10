@@ -44,10 +44,11 @@ const CoursesListBlock = ({node}) => {
         filename={node.frontmatter.event_image ? node.frontmatter.event_image : defaultImg}
        />
       <h4 className="event-title">{node.frontmatter.title}</h4>
-      <span className="event-location">{formatLocation(node.frontmatter.city, node.frontmatter.state)}</span>
+      <h5 className="event-location">{formatLocation(node.frontmatter.city, node.frontmatter.state)}</h5>
       <span className="event-date-range">{formatDate(node.frontmatter.start_date, node.frontmatter.end_date, node.frontmatter.start_time, node.frontmatter.end_time)}</span>
-      <div className="event-excerpt">{node.frontmatter.excerpt}</div>
+      
       <GoogleMapComponent input={node.frontmatter.geojson} />
+      <div className="event-excerpt">{node.frontmatter.excerpt}</div>
     </div>
   )
 }
