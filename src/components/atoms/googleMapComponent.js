@@ -19,7 +19,15 @@ const GoogleMapComponent = ({input}) => {
     // const json = JSON.parse(input)
     const options = {
       center: getGeoJSON(input),
-      zoom: 14
+      zoom: 14,
+      streetViewControl: false,
+      // disableDefaultUI: true, // Good for mobile, maybe Morel's users don't want.
+      mapTypeControl: false,
+      styles: [{
+        stylers: [{
+          saturation: -100
+        }]
+      }]
     }
     return options
   }
@@ -27,7 +35,7 @@ const GoogleMapComponent = ({input}) => {
   return (
     <GoogleMap className="event-google-map" apiKey={process.env.GOOGLE_MAPS_API_KEY}
       options={getMapOptions(input)}>
-      <Marker position={getGeoJSON(input)} />
+      <Marker position={getGeoJSON(input)} animation="google.maps.Animation.DROP" />
     </GoogleMap>
   )
 
