@@ -1,15 +1,14 @@
 import React from 'react'
 import moment from 'moment'
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 
 import GoogleMapComponent from "./../components/atoms/googleMapComponent"
 import defaultImg from "./../images/placeholder.png"
 import CoursesImage from "./../components/atoms/coursesImage"
 import Layout from './../components/layout'
+import SEO from "../components/seo"
 
 import "./eventTemplate.scss"
-
-
 
 const EventTemplate = ({ data: course , location }) => {
 
@@ -43,6 +42,7 @@ const EventTemplate = ({ data: course , location }) => {
   }
     return (
     <Layout location={location}>
+      <SEO title={course.markdownRemark.frontmatter.title} />
       <div className="course-event" key={`course_event_${course.id}`}>
         <CoursesImage
           alt={`Event image for ${course.markdownRemark.frontmatter.title}, ${course.markdownRemark.frontmatter.start_date}`}
