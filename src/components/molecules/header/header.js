@@ -17,22 +17,18 @@ const Header = ({ siteTitle, menu, location }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
+  const [fullLogo, setFullLogo] = useState(true)
   const headerHeight = 89
   const maxWidth = 768
-  let fullLogo = true
 
   const logoSizeHandler = () => {
     if (window.pageYOffset > headerHeight || window.innerWidth < maxWidth) {
-      console.log('scrolled beyond header height')
-      fullLogo = false;
-      const el = document.querySelector('header')
-      el.classList.remove('full-logo')
+      // console.log('scrolled beyond header height')
+      setFullLogo(false)
     } else {
-      fullLogo = true;
-      const el = document.querySelector('header')
-      el.classList.add('full-logo')
+      setFullLogo(true)
     }
-    console.log('fullLogo', fullLogo)
+    // console.log('fullLogo', fullLogo)
   }
 
   ['scroll', 'resize'].forEach(function(e) {
