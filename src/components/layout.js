@@ -9,12 +9,13 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Header from "./header"
-import Footer from "./footer"
+import Header from "./molecules/header/header"
+import Footer from "./molecules/footer/footer"
 import Scripts from "./molecules/scripts"
+import "./theme/bootstrap.scss"
 import "./layout.scss"
 
-const Layout = ({ children }) => {
+const Layout = ({ location, children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -22,6 +23,10 @@ const Layout = ({ children }) => {
           title
           copyrightDate
           authorLink
+          menu {
+            path
+            title
+          }
         }
       }
     }
@@ -29,18 +34,10 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <Footer data={data} />
-        <Scripts />
-      </div>
+      <Header siteTitle={data.site.siteMetadata.title} location={location} menu={data.site.siteMetadata.menu} />
+      <main>{children}</main>
+      <Footer data={data} />
+      <Scripts />
     </>
   )
 }

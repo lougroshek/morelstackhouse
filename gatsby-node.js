@@ -1,7 +1,5 @@
-// const { path } = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
-// console.log('path, ', path)
-const EventTemplate = require.resolve(`./src/templates/eventTemplate.js`) // path.resolve([`src/templates/eventTemplate.js`])
+const EventTemplate = require.resolve(`./src/templates/eventTemplate.js`)
 
 // Creates file paths for events based off of markdown files
 exports.onCreateNode = ({ node, getNode, actions }) => {

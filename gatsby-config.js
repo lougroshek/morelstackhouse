@@ -9,7 +9,29 @@ module.exports = {
     author: `@amygroshek`,
     authorLink: `https://hire.amygroshek.com`,
     copyrightDate: `2018`,
-    siteUrl: `https://morelstackhouse.com`
+    siteUrl: `https://morelstackhouse.com`,
+    menu: [
+      {
+        title: `Sessions`,
+        path:  `/sessions/`
+      },
+      {
+        title: `Courses`,
+        path:  `/courses/`
+      },
+      {
+        title: `ORTHO-BIONOMY®`,
+        path:  `/ortho-bionomy/`
+      },
+      {
+        title: `Free Lectures`,
+        path:  `/free-lectures/`
+      },
+      {
+        title: `Contact`,
+        path:  `/contact/`
+      }
+    ]
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -119,12 +141,6 @@ module.exports = {
             priority: 0.7,
           }
         })
-      }
-    },
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
       }
     },
     {

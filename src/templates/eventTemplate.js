@@ -11,7 +11,7 @@ import "./eventTemplate.scss"
 
 
 
-const EventTemplate = ({ data: course }) => {
+const EventTemplate = ({ data: course , location }) => {
 
   const formatLocation = (city, state) => {
     if (city.length >= 1 && state.length >= 1) {
@@ -42,7 +42,7 @@ const EventTemplate = ({ data: course }) => {
     }
   }
     return (
-    <Layout>
+    <Layout location={location}>
       <div className="course-event" key={`course_event_${course.id}`}>
         <CoursesImage
           alt={`Event image for ${course.markdownRemark.frontmatter.title}, ${course.markdownRemark.frontmatter.start_date}`}

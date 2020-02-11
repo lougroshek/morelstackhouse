@@ -1,9 +1,10 @@
 import React from "react"
 import moment from 'moment'
+import { Link } from "gatsby"
 
-import GoogleMapComponent from "./../atoms/googleMapComponent"
-import defaultImg from "./../../images/placeholder.png"
-import CoursesImage from "./../atoms/coursesImage"
+import defaultImg from "./../../../images/placeholder.png"
+import CoursesImage from "./../../atoms/coursesImage"
+import GoogleMapLink from "./../../atoms/googleMapLink"
 import "./coursesListBlock.scss"
 
 const CoursesListBlock = ({node}) => {
@@ -46,9 +47,9 @@ const CoursesListBlock = ({node}) => {
       <h4 className="event-title">{node.frontmatter.title}</h4>
       <h5 className="event-location">{formatLocation(node.frontmatter.city, node.frontmatter.state)}</h5>
       <span className="event-date-range">{formatDate(node.frontmatter.start_date, node.frontmatter.end_date, node.frontmatter.start_time, node.frontmatter.end_time)}</span>
-      
-      <GoogleMapComponent input={node.frontmatter.geojson} />
+      <GoogleMapLink geojson={node.frontmatter.geojson} />
       <div className="event-excerpt">{node.frontmatter.excerpt}</div>
+      <Link to={`/events/${node.fields.slug}`} className="btn btn-primary">REGISTER NOW!</Link>
     </div>
   )
 }

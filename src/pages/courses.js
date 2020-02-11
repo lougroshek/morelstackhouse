@@ -3,7 +3,7 @@ import { graphql, StaticQuery, Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import CoursesListBlock from "./../components/molecules/coursesListBlock"
+import CoursesListBlock from "./../components/molecules/coursesListBlock/coursesListBlock"
 
 const getEventsData = graphql`
 {
@@ -43,18 +43,21 @@ const getEventsData = graphql`
         }
         html
         excerpt(format: PLAIN, pruneLength: 500)
+        fields {
+          slug
+        }
       }
     }
   }
 }
 `;
 
-const EventsPage = () => {
+const EventsPage = ({ location }) => {
   const pageTitle = "Courses";
 
   return (
 
-    <Layout>
+    <Layout location={ location }>
       <SEO title={pageTitle} />
       <h3>Courses with Morel</h3>
 
@@ -87,7 +90,6 @@ const EventsPage = () => {
           </div>
         )}
       />
-      <Link to="/page-2/">Go to page 2</Link>
     </Layout>
   )
 }
