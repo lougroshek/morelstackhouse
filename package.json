@@ -32,6 +32,7 @@
     "react-helmet": "^5.2.1",
     "react-leaflet": "^2.6.1",
     "react-maps-google": "^0.3.2",
+    "react-svg-ionicons": "^0.2.3",
     "reactstrap": "^8.4.1"
   },
   "devDependencies": {

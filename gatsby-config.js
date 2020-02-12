@@ -9,7 +9,7 @@ module.exports = {
     author: `@amygroshek`,
     authorLink: `https://hire.amygroshek.com`,
     copyrightDate: `2018`,
-    contactLocation: `{"type":"Point","coordinates":[-89.6541452,43.1151005]}`,
+    contactLocation: `{"type":"Point","coordinates":[-89.38916257697494,43.056114624153096]}`,
     siteUrl: `https://morelstackhouse.com`,
     menu: [
       {

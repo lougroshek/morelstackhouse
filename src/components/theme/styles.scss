@@ -1,0 +1,83 @@
+// Footer
+$footer-gray: $black; // $gray-800;
+
+footer {
+  margin-top: 3vw;
+  .col-border-box {
+    border-top: solid 1rem $footer-gray;
+    border-right: solid 1rem $footer-gray;
+    .col-legal {
+      background-color: $footer-gray;
+      text-align: left;
+      color: #fff;
+      margin-top: 2rem;
+      padding-top: 3rem;
+      padding-bottom: 2rem;
+      padding-left: 3rem;
+      padding-right: 4rem;
+      a {
+        color: $teal;
+      }
+      @include media-breakpoint-up(md) {
+        padding-right: 10rem;
+      }
+      @include media-breakpoint-up(lg) {
+        padding-right: 16rem;
+      }
+      @include media-breakpoint-up(xl) {
+        padding-right: 18rem;
+      }
+    }
+
+    .col-icons {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      background-color: $footer-gray;
+      height: 5rem;
+      margin-bottom: 1rem;
+      a {
+        margin: 0.5rem 0.35rem 1rem;
+        svg {
+          width: 30px !important;
+          height: 30px !important;
+          color: blue;
+        }
+      }
+      @include media-breakpoint-up(lg) {
+        text-align: center;
+        color: #fff;
+      }
+    }
+  }
+
+  .col-up-button {
+    border-left: 1rem solid $footer-gray;
+    background: #fff;
+    color: $footer-gray;
+    svg {
+      fill: $footer-gray;
+      margin-left: -0.5rem;
+      @include media-breakpoint-up(sm) {
+        margin: auto;
+        display: block;
+        // margin-left: -0.3rem;
+      }
+      @include media-breakpoint-up(md) {
+        margin: auto;
+        display: block;
+        margin-left: 0.75rem;
+      }
+      @include media-breakpoint-up(lg) {
+        margin: auto;
+        display: block;
+        margin-left: 1.35rem;
+      }
+      @include media-breakpoint-up(xl) {
+        margin: auto;
+        display: block;
+        margin-left: 2rem;
+      }
+    }
+  }
+}

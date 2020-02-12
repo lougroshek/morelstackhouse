@@ -59,18 +59,10 @@ header {
     }
     .navbar-nav .nav-link {
       padding-top: 0.7rem;
-    //   padding-bottom: 0;
-    }
-    .collapse.show.navbar-collapse {
-      // padding-top: 2vh;
-      // transition: padding-top 50ms linear;
-      ul li {
-        // padding-top: 1vh;
-        // transition: padding-top 60ms linear;
-      }
     }
   }
-
+  // Dropdown menu styles, set up before display so
+  // the animation doesn't jump
   &.toggle-menu {
     background-color: blue;
     nav {
