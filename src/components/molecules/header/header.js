@@ -21,6 +21,8 @@ const Header = ({ siteTitle, menu, location }) => {
   const headerHeight = 89
   const maxWidth = 768
 
+  const [isToggleMenu, setToggleMenu] = useState(false)
+
   const logoSizeHandler = () => {
     if (window.pageYOffset > headerHeight || window.innerWidth < maxWidth) {
       // console.log('scrolled beyond header height')
@@ -29,9 +31,14 @@ const Header = ({ siteTitle, menu, location }) => {
       setFullLogo(true)
     }
     // console.log('fullLogo', fullLogo)
+    if (window.innerWidth < maxWidth) {
+      setToggleMenu(true)
+    } else {
+      setToggleMenu(false)
+    }
   }
 
-  ['scroll', 'resize'].forEach(function(e) {
+  ['scroll', 'resize', 'load'].forEach(function(e) {
     window.addEventListener(e, logoSizeHandler);
   });
 
@@ -44,7 +51,7 @@ const Header = ({ siteTitle, menu, location }) => {
   })
 
   return (
-    <header className={(!!fullLogo ? 'full-logo' : '')}>
+    <header className={(!!fullLogo ? 'full-logo' : '') + ' ' + (!!isToggleMenu ? 'toggle-menu' : '')}>
       <Navbar color="light" light expand="md" fixed="top">
         <NavbarBrand href="/">
           <span className="initial">M</span>

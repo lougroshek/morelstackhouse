@@ -16,10 +16,6 @@ header {
         }
       }
     }
-    // .navbar-nav .nav-link {
-    //   padding-top: 0.8rem;
-    //   padding-bottom: 0.7rem;
-    // }
   }
   nav {
     padding-left: 3rem;
@@ -61,15 +57,29 @@ header {
         margin-right: 1.5vw;
       }
     }
-    // .navbar-nav .nav-link {
-    //   padding-top: 1.6rem;
+    .navbar-nav .nav-link {
+      padding-top: 0.7rem;
     //   padding-bottom: 0;
-    // }
+    }
     .collapse.show.navbar-collapse {
       // padding-top: 2vh;
+      // transition: padding-top 50ms linear;
       ul li {
         // padding-top: 1vh;
-        // transition: padding-top 50ms linear;
+        // transition: padding-top 60ms linear;
+      }
+    }
+  }
+
+  &.toggle-menu {
+    background-color: blue;
+    nav {
+      ul.navbar-nav {
+        padding-top: 1.7vh;
+        li.nav-item {
+          padding-top: 0.5rem;
+          padding-bottom: 0;
+        }
       }
     }
   }
