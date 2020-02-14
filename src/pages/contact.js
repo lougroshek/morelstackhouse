@@ -1,11 +1,12 @@
 import React from 'react'
 
 import Layout from "../components/layout"
-import Image from "../components/image"
+// import Image from "../components/image"
 import SEO from "../components/seo"
 import { graphql, StaticQuery } from "gatsby"
 import GoogleMapLink from "./../components/atoms/googleMapLink"
 import GoogleMapComponent from "./../components/atoms/googleMapComponent"
+import ContactForm from './../components/molecules/contactForm/contactForm'
 
 const getPageData = graphql`
   {
@@ -32,7 +33,8 @@ const ContactPage = ({ location }) => {
         <div className="row">
           <div className="col-12 col-sm-10 offset-sm-1">
             <h1>Contact Morel</h1>
-            <p>Contact Morel for information about sessions or instruction. </p>
+            <p>Contact Morel for information about sessions or instruction. </p>            
+            <ContactForm />
           </div>
         </div>
         <div className="row">

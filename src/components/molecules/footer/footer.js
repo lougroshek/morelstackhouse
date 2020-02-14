@@ -26,10 +26,7 @@ const Footer = ({data}) => {
             <a href="mailto:morel@morelstackhouse.com" alt="Email Morel">
               <IonIcon name="mail" size="large" color="white" strokeWidth={1} />
             </a>
-            <a href="tel:morel@morelstackhouse.com" alt="Call Morel">
-              <IonIcon name="call" size="large" color="white" strokeWidth={3} />
-            </a>
-            <a href="tel:morel@morelstackhouse.com" alt="Follow Morel on Facebook">
+            <a href="https://www.facebook.com/morel.stackhouse" alt="Follow Morel on Facebook">
               <IonIcon name="facebook" size="large" color="white" strokeWidth={3} />
             </a>
           </div>
