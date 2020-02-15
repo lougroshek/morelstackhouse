@@ -49,7 +49,7 @@ const CoursesListBlock = ({node}) => {
       <span className="event-date-range">{formatDate(node.frontmatter.start_date, node.frontmatter.end_date, node.frontmatter.start_time, node.frontmatter.end_time)}</span>
       <GoogleMapLink geojson={node.frontmatter.geojson} />
       <div className="event-excerpt">{node.frontmatter.excerpt}</div>
-      <Link to={`/events/${node.fields.slug}`} className="btn btn-primary">REGISTER NOW!</Link>
+      <Link to={`/events/${node.fields.slug}`} className="btn btn-primary">REGISTRATION</Link>
     </div>
   )
 }

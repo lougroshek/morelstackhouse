@@ -23,6 +23,7 @@ const GoogleMapComponent = ({input}) => {
       streetViewControl: false,
       // disableDefaultUI: true, // Good for mobile, maybe Morel's users don't want.
       mapTypeControl: false,
+      controlSize: 24,
       styles: [{
         stylers: [{
           saturation: -100
@@ -43,7 +44,7 @@ const GoogleMapComponent = ({input}) => {
     <GoogleMap className="event-google-map" apiKey={process.env.GOOGLE_MAPS_API_KEY}
       options={getMapOptions(input)}>
       <Marker 
-        position={getGeoJSON(input)} 
+        position={getGeoJSON(input)}
         animation="google.maps.Animation.DROP"
         options={getMarkerOptions()} />
     </GoogleMap>

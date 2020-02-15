@@ -126,3 +126,10 @@ $pagination-disabled-border-color:  $pagination-border-color !default;
 // Breadcrumbs
 
 $breadcrumb-bg:                     transparent !default;
+
+::selection {
+  background: $teal; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: $teal; /* Gecko Browsers */
+}

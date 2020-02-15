@@ -2,7 +2,9 @@
 $footer-gray: $black; // $gray-800;
 
 footer {
-  margin-top: 3vw;
+  padding-top: 5rem;
+  margin-top: 5rem;
+  display: block;
   .col-border-box {
     border-top: solid 1rem $footer-gray;
     border-right: solid 1rem $footer-gray;

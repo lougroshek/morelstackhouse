@@ -19,7 +19,7 @@ const bundle = {
 const Footer = ({data}) => {
   addIcons(bundle)
   return (
-    <footer className="container-fluid">
+    <footer className="container-fluid pt-10">
       <div className="row">
         <div className="col col-border-box col-11 row">
           <div className="col col-icons col-8 offset-4 col-sm-4 offset-sm-8 order-sm-2 col-lg-3 offset-lg-3">

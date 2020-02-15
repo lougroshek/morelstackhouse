@@ -12,10 +12,10 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./molecules/header/header"
 import Footer from "./molecules/footer/footer"
 import Scripts from "./molecules/scripts"
-import "./theme/bootstrap.scss"
+import "./../theme/bootstrap.scss"
 import "./layout.scss"
 
-const Layout = ({ location, children }) => {
+const Layout = ({ location, pageType, children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -35,7 +35,7 @@ const Layout = ({ location, children }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} location={location} menu={data.site.siteMetadata.menu} />
-      <main>{children}</main>
+      <main className={`page-type-${pageType ? pageType : 'null'}`}>{children}</main>
       <Footer data={data} />
       <Scripts />
     </>
