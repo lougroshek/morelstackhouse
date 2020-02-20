@@ -1,0 +1,15 @@
+.page-type-home {
+  .jumbotron {
+    height: 90vh;
+    background: gray;
+    &.row {
+      .col {
+        h1,
+        p {
+          text-align: center !important;
+          color: $white;
+        }
+      }
+    }
+  }
+}

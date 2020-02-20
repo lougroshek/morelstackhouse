@@ -1,85 +1,113 @@
 // Footer
-$footer-gray: $black; // $gray-800;
+$footer-gray: $gray-300;
 
 footer {
   padding-top: 5rem;
   margin-top: 5rem;
   display: block;
-  .col-border-box {
-    border-top: solid 1rem $footer-gray;
-    border-right: solid 1rem $footer-gray;
+  .row {
+    background-color: $footer-gray;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
     .col-legal {
-      background-color: $footer-gray;
       text-align: left;
-      color: #fff;
-      margin-top: 2rem;
-      padding-top: 3rem;
-      padding-bottom: 2rem;
-      padding-left: 3rem;
-      padding-right: 4rem;
+      color: $gray-800;
+      padding-right: 6rem;
       a {
         color: $teal;
       }
       @include media-breakpoint-up(md) {
-        padding-right: 10rem;
       }
       @include media-breakpoint-up(lg) {
-        padding-right: 16rem;
+        padding-right: 0;
       }
       @include media-breakpoint-up(xl) {
-        padding-right: 18rem;
+        font-size: calc($font-size-base * 1.5);
       }
     }
 
     .col-icons {
       display: flex;
-      align-items: flex-end;
-      justify-content: flex-end;
-      background-color: $footer-gray;
-      height: 5rem;
-      margin-bottom: 1rem;
+      align-items: center;
+      justify-content: left;
+      margin-bottom: 2rem;
       a {
         margin: 0.5rem 0.35rem 1rem;
         svg {
-          width: 30px !important;
-          height: 30px !important;
-          color: blue;
+          width: 50px !important;
+          height: 50px !important;
+          fill: $gray-800;
+          @include media-breakpoint-up(xl) {
+            width: 60px !important;
+            height: 60px !important;
+          }
         }
       }
+      @include media-breakpoint-up(md) {
+        // padding-right: 0;
+        // 
+      }
       @include media-breakpoint-up(lg) {
+        justify-content: center;
         text-align: center;
-        color: #fff;
+        margin-bottom: 0;
+        // color: $black;
       }
     }
   }
-
-  .col-up-button {
-    border-left: 1rem solid $footer-gray;
-    background: #fff;
-    color: $footer-gray;
+  .up-button {
+    width: 40px;
+    display: block;
+    position: fixed;
+    right: 20px;
+    bottom: 240px;
+    span {
+      display: block;
+      width: 200px;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      text-align: right;
+      transform-origin: center;
+      position: absolute;
+      top: 230px;
+      left: 5px;
+      transform-origin: 0 0;
+      transform: rotate(270deg);
+      color: $gray-800;
+      // transform: translate(-100px, 0);
+      /* Legacy vendor prefixes that you probably don't need... */
+      /* Safari */
+      -webkit-transform: rotate(270deg);
+      /* Firefox */
+      -moz-transform: rotate(270deg);
+      /* IE */
+      -ms-transform: rotate(270deg);
+      /* Opera */
+      -o-transform: rotate(270deg);
+      /* Internet Explorer */
+      filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    }
     svg {
-      fill: $footer-gray;
-      margin-left: -0.5rem;
+      fill: $gray-800;
       @include media-breakpoint-up(sm) {
-        margin: auto;
-        display: block;
-        // margin-left: -0.3rem;
       }
       @include media-breakpoint-up(md) {
-        margin: auto;
-        display: block;
-        margin-left: 0.75rem;
       }
       @include media-breakpoint-up(lg) {
-        margin: auto;
-        display: block;
-        margin-left: 1.35rem;
       }
       @include media-breakpoint-up(xl) {
-        margin: auto;
-        display: block;
-        margin-left: 2rem;
       }
     }
   }
+}
+
+// Manage scroll link visibility
+.scroll-status-top .up-button {
+  opacity: 0;
+  transition: opacity 200ms linear;
+}
+
+.scroll-status-scrolled .up-button {
+  opacity: 1;
+  transition: opacity 200ms linear;
 }

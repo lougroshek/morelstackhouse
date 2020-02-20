@@ -1,6 +1,6 @@
 # MORELSTACKHOUSE.COM
 
-Gatsby repo for morelstackhouse.com
+Gatsby repo for [morelstackhouse.com](https://morelstackhouse.com)
 
 ## Develop
 
@@ -16,6 +16,7 @@ gatsby build
 
 ## Features and Dependencies
 
+- Right now this repo runs on Node 12. Node 10 and below not supported.
 - Update menu items by editing the menu array in `./gatsby-config.js`
 - Update Bootstrap variables in `./src/components/theme/_variables.scss`
 

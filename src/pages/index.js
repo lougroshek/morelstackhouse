@@ -1,6 +1,6 @@
 import React from "react"
 // import { Link } from "gatsby"
-import { Jumbotron, Button } from 'reactstrap';
+import { Jumbotron, Button, Row, Col } from 'reactstrap';
 import { graphql, StaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
@@ -26,17 +26,17 @@ const getPageData = graphql`
 `
 
 const IndexPage = ({ location }) => (
-  <Layout location={location}>
+  <Layout location={location} pageType="home">
     <SEO title="Home" />
     <StaticQuery
       query={getPageData}
       render={data => (
-       <Jumbotron>
-         <div className="v-center">
+         <Row className="row align-items-center jumbotron">
+           <Col>
            <h1>{data.site.siteMetadata.title}</h1>
            <p>Ortho-Bionomy Practice and Instruction</p>
-         </div>
-       </Jumbotron>
+           </Col>
+         </Row>
       )}
     />
     <p>Welcome to your new Gatsby site.</p>
