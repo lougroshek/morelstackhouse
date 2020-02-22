@@ -41,7 +41,7 @@ const GoogleMapComponent = ({input}) => {
   }
 
   return (
-    <GoogleMap className="event-google-map" apiKey={process.env.GOOGLE_MAPS_API_KEY}
+    <GoogleMap className="event-google-map" apiKey={process.env.GATSBY_GOOGLE_MAPS_API_KEY}
       options={getMapOptions(input)}>
       <Marker
         position={getGeoJSON(input)}
