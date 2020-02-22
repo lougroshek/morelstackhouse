@@ -8,6 +8,7 @@
     "dotenv": "^8.2.0",
     "formik": "^2.1.4",
     "gatsby": "^2.19.7",
+    "gatsby-background-image": "^0.10.2",
     "gatsby-env-variables": "^1.0.4",
     "gatsby-image": "^2.2.39",
     "gatsby-plugin-google-analytics": "^2.1.35",
@@ -23,6 +24,7 @@
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-transformer-remark": "^2.6.50",
     "gatsby-transformer-sharp": "^2.3.13",
+    "intersection-observer": "^0.7.0",
     "leaflet": "^1.6.0",
     "load-google-maps-api": "^2.0.1",
     "moment": "^2.24.0",
@@ -35,6 +37,7 @@
     "react-maps-google": "^0.3.2",
     "react-svg-ionicons": "^0.2.3",
     "reactstrap": "^8.4.1",
+    "styled-components": "^5.0.1",
     "yup": "^0.28.1"
   },
   "devDependencies": {

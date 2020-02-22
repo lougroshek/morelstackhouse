@@ -1,0 +1,31 @@
+.testimonial {
+  margin-top: 3rem;
+  margin-left: 2rem;
+}
+
+.testimonial .testimonial-text {
+  position: relative;
+}
+
+.testimonial .testimonial-text:before {
+    content: '\201C';
+    color: $gray-600; // #81bedb;
+    font-size: 7.5em;
+    font-weight: 700;
+    font-family: Georgia, serif;
+    opacity: .2;
+    position: absolute;
+    top: -0.4em;
+    left: -.26em;    
+    text-shadow: none;
+    z-index: -300;
+    // font-style: italic;
+}
+
+.testimonial .testimonial-text p {
+  font-size: 0.9rem;
+  font-weight: $font-weight-bolder;
+  &.testimonial-name {
+    font-weight: $font-weight-base;
+  }
+}

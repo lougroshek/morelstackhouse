@@ -19,12 +19,20 @@ const bundle = {
 const Footer = ({data}) => {
   addIcons(bundle)
 
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(true)
   const headerHeight = 89
-  const maxWidth = 768
+
+  const scrollToTop = () => {
+    console.log('scrollToTop');
+    // e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
 
   const logoSizeHandler = () => {
-    if (window.pageYOffset > headerHeight || window.innerWidth < maxWidth) {
+    if (window.pageYOffset > headerHeight) {
       // console.log('scrolled beyond header height')
       setIsScrolled(false)
     } else {
@@ -37,7 +45,7 @@ const Footer = ({data}) => {
   });
 
   return (
-    <footer className={`container-fluid pt-10 scroll-status-${isScrolled ? 'top' : 'scrolled'}`}>
+    <footer className={`container-fluid pt-10 scroll-status-${isScrolled === true ? 'top' : 'scrolled'}`}>
       <div className="row">
         <div className="col col-icons col-10 offset-1 order-sm-2 col-lg-6 offset-lg-0">
           <a href="mailto:morel@morelstackhouse.com" alt="Email Morel">
@@ -53,7 +61,7 @@ const Footer = ({data}) => {
           <p>Society of Ortho-Bionomy International® is a registered trademark that indicates membership in the Society, and it is used with permission.</p>
           <p>This site was <a href={data.site.siteMetadata.authorLink}>built ♥ with love</a>.</p>
         </div>
-        <div className="up-button">
+        <div className="up-button" onClick={scrollToTop}>
           <IonIcon name="arrowUp" size="large" color="gray" strokeWidth={3} />
           <span>SCROLL TO TOP</span>
         </div>
