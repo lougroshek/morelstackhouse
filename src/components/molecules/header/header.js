@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import {
   Collapse,
@@ -37,10 +37,12 @@ const Header = ({ siteTitle, menu, location }) => {
       setToggleMenu(false)
     }
   }
-
-  ['scroll', 'resize', 'load'].forEach(function(e) {
-    window.addEventListener(e, logoSizeHandler);
-  });
+  
+  useEffect(() => {
+    ['scroll', 'resize', 'load'].forEach(function(e) {
+      window.addEventListener(e, logoSizeHandler);
+    })
+  })
 
   menu.forEach((item, index) => {
     if (item.path === location.pathname) {

@@ -50,7 +50,7 @@ const IndexPage = ({ location }) => {
               <p className="testimonial-name">~ Roy M.</p>
             </div>
           </div>
-          <p testimonial-prompt>Contact Morel for Ortho-Bionomy® sessions.</p>
+          <p className="testimonial-prompt">Contact Morel for Ortho-Bionomy® sessions.</p>
           <Link to="/contact/" className="btn btn-primary">CONTACT MOREL</Link>
         </Col>
         <Col
@@ -65,7 +65,7 @@ const IndexPage = ({ location }) => {
               <p className="testimonial-name">~ Lynne Marotta, LMT, Registered Instructor of Ortho-Bionomy®</p>
             </div>
           </div>
-          <p testimonial-prompt>Enroll in Morel's Ortho-Bionomy® courses..</p>
+          <p className="testimonial-prompt">Enroll in Morel's Ortho-Bionomy® courses..</p>
           <Link to="/courses/" className="btn btn-primary">SEE COURSES</Link>
         </Col>
       </Row>
