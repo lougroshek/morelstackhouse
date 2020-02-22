@@ -8,18 +8,11 @@ import GoogleMapLink from "./../components/atoms/googleMapLink"
 import GoogleMapComponent from "./../components/atoms/googleMapComponent"
 import ContactForm from './../components/molecules/contactForm/contactForm'
 
-const getPageData = graphql`
+const getLocationData = graphql`
   {
     site {
       siteMetadata {
-        title
-        copyrightDate
-        authorLink
         contactLocation
-        menu {
-          path
-          title
-        }
       }
     }
   }
@@ -42,24 +35,19 @@ const ContactPage = ({ location }) => {
             <ContactForm />
           </div>
           <div className="col-address col-12 col-sm-10 offset-sm-1 col-lg-5 offset-lg-0">
-            <h4>Location</h4>
-            <span className="address">Lakeside Street</span>
-            <span className="address">Madison, WI, 53711
-              <StaticQuery
-                query={getPageData}
-                render={data => (
-                  <>
-                  &nbsp;&nbsp;<GoogleMapLink geojson={data.site.siteMetadata.contactLocation} />
-                  </>
-                )}/>
-            </span>
             <StaticQuery
-              query={getPageData}
+              query={getLocationData}
               render={data => (
                 <>
-                <GoogleMapComponent input={data.site.siteMetadata.contactLocation} />
+                  <h4>Location</h4>
+                  <span className="address">Lakeside Street</span>
+                  <span className="address">Madison, WI, 53711
+                    <GoogleMapLink geojson={data.site.siteMetadata.contactLocation} />
+                  </span>
+                  <GoogleMapComponent input={data.site.siteMetadata.contactLocation} />
                 </>
-              )}/>
+              )}
+            />
           </div>
         </div>
       </div>

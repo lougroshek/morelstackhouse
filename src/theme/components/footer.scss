@@ -22,7 +22,7 @@ footer {
         padding-right: 0;
       }
       @include media-breakpoint-up(xl) {
-        font-size: calc($font-size-base * 1.5);
+        font-size: $font-size-base * 1.5;
       }
     }
 

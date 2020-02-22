@@ -43,7 +43,7 @@ const GoogleMapComponent = ({input}) => {
   return (
     <GoogleMap className="event-google-map" apiKey={process.env.GOOGLE_MAPS_API_KEY}
       options={getMapOptions(input)}>
-      <Marker 
+      <Marker
         position={getGeoJSON(input)}
         animation="google.maps.Animation.DROP"
         options={getMarkerOptions()} />

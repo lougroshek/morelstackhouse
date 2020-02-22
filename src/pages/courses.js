@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, StaticQuery, Link } from "gatsby"
+import { graphql, StaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -56,38 +56,32 @@ const EventsPage = ({ location }) => {
   const pageTitle = "Courses";
 
   return (
-
     <Layout location={ location }>
       <SEO title={pageTitle} />
       <h3>Courses with Morel</h3>
 
-      <h3>Upcoming Courses</h3>
       <StaticQuery
         query={getEventsData}
         render={data => (
-          <div className="events-list">
-            {data.allMarkdownRemark.edges
-              // Filter all entries *ahead of* today.
-              .filter(({node}) => { return new Date(node.frontmatter.start_date) >= new Date() })
-              .map(({node}) => (
-                <CoursesListBlock node={node} key={node.id} />
-            ))}
-          </div>
-        )}
-      />
-
-      <h3>Past Courses</h3>
-      <StaticQuery
-        query={getEventsData}
-        render={data => (
-          <div className="events-list">
-            {data.allMarkdownRemark.edges
-              // Filter all entries *past* today.
-              .filter(({node}) => { return new Date(node.frontmatter.start_date) < new Date() })
-              .map(({node}) => (
-                <CoursesListBlock node={node} key={node.id} />
-            ))}
-          </div>
+          <>
+            <div className="events-list">
+              {data.allMarkdownRemark.edges
+                // Filter all entries *ahead of* today.
+                .filter(({node}) => { return new Date(node.frontmatter.start_date) >= new Date() })
+                .map(({node}) => (
+                  <CoursesListBlock node={node} key={node.id} />
+              ))}
+            </div>
+            <h3>Past Courses</h3>
+            <div className="events-list">
+              {data.allMarkdownRemark.edges
+                // Filter all entries *past* today.
+                .filter(({node}) => { return new Date(node.frontmatter.start_date) < new Date() })
+                .map(({node}) => (
+                  <CoursesListBlock node={node} key={node.id} />
+              ))}
+            </div>
+          </>
         )}
       />
     </Layout>
