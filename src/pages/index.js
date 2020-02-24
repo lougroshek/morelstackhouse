@@ -42,7 +42,7 @@ const IndexPage = ({ location }) => {
           xs={{ size: 10, offset: 1 }}
           md={{ size: 5, offset: 1 }}
           lg={{ size: 5, offset: 1 }}
-          xl={{ size: 4, offset: 2 }}
+          xl={{ size: 5, offset: 1 }}
           >
           <div className="testimonial">
             <div className="testimonial-text">
@@ -58,14 +58,14 @@ const IndexPage = ({ location }) => {
           xs={{ size: 10, offset: 1 }}
           md={{ size: 5, offset: 0 }}
           lg={{ size: 5, offset: 0 }}
-          xl={{ size: 4, offset: 0 }}>
+          xl={{ size: 5, offset: 0 }}>
           <div className="testimonial">
             <div className="testimonial-text">
               <p>Morel... knew my potential and wouldn't settle for anything less. She held me to a standard that I still try to achieve. I credit Morel with... my success as an Ortho-Bionomy® practitioner.</p>
               <p className="testimonial-name">~ Lynne Marotta, LMT, Registered Instructor of Ortho-Bionomy®</p>
             </div>
           </div>
-          <p className="testimonial-prompt">Enroll in Morel's Ortho-Bionomy® courses..</p>
+          <p className="testimonial-prompt">Enroll in Morel's Ortho-Bionomy® courses.</p>
           <Link to="/courses/" className="btn btn-primary">SEE COURSES</Link>
         </Col>
       </Row>

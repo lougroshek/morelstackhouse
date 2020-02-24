@@ -36,7 +36,6 @@
     "react-icons": "^3.9.0",
     "react-leaflet": "^2.6.1",
     "react-maps-google": "^0.3.2",
-    "react-svg-ionicons": "^0.2.3",
     "reactstrap": "^8.4.1",
     "styled-components": "^5.0.1",
     "yup": "^0.28.1"

@@ -1,4 +1,7 @@
-// Components 
+@import 'bootstrap/bootstrap';
+@import 'utilities/utilities';
+
+// Components
 @import 'components/footer';
 @import 'components/testimonial';
 
@@ -6,3 +9,5 @@
 // Pages
 @import 'pages/home';
 @import 'pages/contact';
+@import 'pages/sessions';
+@import 'pages/ortho-bionomy';

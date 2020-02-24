@@ -41,7 +41,7 @@ const EventTemplate = ({ data: course , location }) => {
     }
   }
     return (
-    <Layout location={location}>
+    <Layout location={location} pageType="course">
       <SEO title={course.markdownRemark.frontmatter.title} />
       <div className="course-event" key={`course_event_${course.id}`}>
         <CoursesImage

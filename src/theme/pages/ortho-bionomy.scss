@@ -1,0 +1,40 @@
+.page-type-ortho-bionomy {
+  .row {
+    margin: 1.75rem 0;
+    @include media-breakpoint-up(lg) {
+      margin: 3rem 0;
+    }
+    &:first-of-type {
+      padding-top: 3rem;
+      @include media-breakpoint-up(lg) {
+        padding-top: 5rem;
+      }
+    }
+    .col-desc {
+      padding-top: 2rem;
+      @include media-breakpoint-up(lg) {
+        padding-top: 0;
+      }
+    }
+  }
+  h1 {
+    text-align: center;
+  }
+  h2 {
+    margin-bottom: 1.5rem;
+  }
+  img {
+    @include grayscale;
+  }
+  .btn {
+    margin: 0.5rem 0 0;
+  }
+  .session-desc {
+    .desc {
+      margin-top: 1.2rem;
+      @include media-breakpoint-up(lg) {
+        margin-top: 0;
+      }
+    }
+  }
+}

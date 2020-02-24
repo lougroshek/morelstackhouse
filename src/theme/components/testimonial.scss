@@ -1,6 +1,11 @@
 .testimonial {
   margin-top: 3rem;
   margin-left: 2rem;
+  @include media-breakpoint-up(lg) {
+    &:first-of-type {
+      margin-top: 1rem;
+    }
+  }
 }
 
 .testimonial .testimonial-text {
@@ -23,8 +28,8 @@
 }
 
 .testimonial .testimonial-text p {
-  font-size: 0.9rem;
-  font-weight: $font-weight-bolder;
+  font-size: 1rem;
+  // font-weight: $font-weight-bolder;
   &.testimonial-name {
     font-weight: $font-weight-base;
   }

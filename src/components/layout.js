@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./molecules/header/header"
 import Footer from "./molecules/footer/footer"
 import Scripts from "./molecules/scripts"
-import "./../theme/bootstrap.scss"
+import "./../theme/styles.scss"
 import "./layout.scss"
 
 const Layout = ({ location, pageType, children }) => {
