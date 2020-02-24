@@ -1,22 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from "prop-types"
-// import { IonIcon, addIcons } from 'react-svg-ionicons'
 import { MdKeyboardArrowUp } from "react-icons/md";
 import { FiFacebook, FiMail } from "react-icons/fi";
-// import bundle from 'react-svg-ionicons/bundles/generic'
-// import mail from 'react-svg-ionicons/icons/mail'
-// import call from 'react-svg-ionicons/icons/call'
-// import facebook from 'react-svg-ionicons/icons/logo-facebook'
-// import arrowUp from 'react-svg-ionicons/icons/arrow-up'
-// import "./../../theme/bootstrap.scss"
-// import "./footer.scss"
 
-// const bundle = {
-//   mail,
-//   call,
-//   facebook,
-//   arrowUp
-// }
 
 const Footer = ({data}) => {
   // addIcons(bundle)

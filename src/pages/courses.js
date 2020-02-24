@@ -1,11 +1,12 @@
 import React from "react"
 import { graphql, StaticQuery, Link } from "gatsby"
 import { Row, Col, Button } from 'reactstrap';
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import CoursesListBlock from "./../components/molecules/coursesListBlock/coursesListBlock"
-import SessionsFirstImage from "../components/atoms/sessionsFirstImage"
+import CoursesTopImage from "../components/atoms/coursesTopImage"
 
 const getEventsData = graphql`
 {
@@ -62,14 +63,20 @@ const EventsPage = ({ location }) => {
       <SEO title={pageTitle} />
         <Row className="heading">
           <Col 
-            xs={{ size: 10, offset: 0 }}
-            sm={{ size: 8, offset: 1 }}
+            xs={{ size: 12, offset: 0 }}
+            sm={{ size: 10, offset: 1 }}
             >
             <h1>Courses with Morel</h1>
           </Col>
           <Col 
-            xs={{ size: 2, offset: 0 }}>
-            <Button color="secondary">Scroll to Courses</Button>{' '}
+            xs={{ size: 12, offset: 0 }}
+            sm={{ size: 4, offset: 3 }}
+            md={{ size: 5, offset: 7 }}
+            lg={{ size: 3, offset: 8 }}
+            className="scroll-to-courses">
+            <Button color="secondary">Scroll to Courses
+              <MdKeyboardArrowDown/>
+            </Button>{' '}
           </Col>
         </Row>
         <Row className="">
@@ -78,7 +85,7 @@ const EventsPage = ({ location }) => {
             sm={{ size: 10, offset: 1 }}
             lg={{ size: 5, offset: 1 }}
             xl={{ size: 5, offset: 1 }}>
-            <SessionsFirstImage/>
+            <CoursesTopImage/>
           </Col>
           <Col className="col-desc align-items-center"
             xs={{ size: 12, offset: 0 }}
@@ -103,7 +110,14 @@ const EventsPage = ({ location }) => {
         query={getEventsData}
         render={data => (
           <>
-            <h2>Upcoming Courses</h2>
+            <Row>
+              <Col
+                xs={{ size: 12, offset: 0 }}
+                sm={{ size: 10, offset: 1 }}
+                >
+                <h2>Upcoming Courses</h2>
+              </Col>
+            </Row>
             <div className="events-list">
               {data.allMarkdownRemark.edges
                 // Filter all entries *ahead of* today.
@@ -112,7 +126,14 @@ const EventsPage = ({ location }) => {
                   <CoursesListBlock node={node} key={node.id} />
               ))}
             </div>
-            <h2>Past Courses</h2>
+            <Row>
+              <Col 
+                xs={{ size: 12, offset: 0 }}
+                sm={{ size: 10, offset: 1 }}
+                >
+                <h2>Past Courses</h2>
+              </Col>
+            </Row>
             <div className="events-list">
               {data.allMarkdownRemark.edges
                 // Filter all entries *past* today.

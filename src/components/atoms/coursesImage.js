@@ -26,7 +26,7 @@ import Img from "gatsby-image"
                relativePath
                name
                childImageSharp {
-                 fluid(maxWidth: 400) {
+                 fluid(maxWidth: 800) {
                    ...GatsbyImageSharpFluid
                  }
                }
