@@ -23,9 +23,6 @@ const getEventsData = graphql`
         id
         frontmatter {
           city
-          contact_email
-          contact_name
-          contact_phone
           start_date
           end_date
           event_image

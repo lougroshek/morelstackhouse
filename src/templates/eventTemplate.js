@@ -5,6 +5,7 @@ import { graphql } from "gatsby"
 import GoogleMapComponent from "./../components/atoms/googleMapComponent"
 import defaultImg from "./../images/placeholder.png"
 import CoursesImage from "./../components/atoms/coursesImage"
+import BioImage from "./../components/atoms/bioImage"
 import Layout from './../components/layout'
 import SEO from "../components/seo"
 
@@ -53,6 +54,34 @@ const EventTemplate = ({ data: course , location }) => {
         <span className="event-date-range">{formatDate(course.markdownRemark.frontmatter.start_date, course.markdownRemark.frontmatter.end_date, course.markdownRemark.frontmatter.start_time, course.markdownRemark.frontmatter.end_time)}</span>
         <GoogleMapComponent input={course.markdownRemark.frontmatter.geojson} />
         <div className="event-desc" dangerouslySetInnerHTML={{ __html: course.markdownRemark.html }}></div>
+        { course.markdownRemark.frontmatter.testimonials ?
+          <h4>What Others have Said About This Work</h4> : null }
+        { course.markdownRemark.frontmatter.testimonials.map((data, index) => {
+            return (
+              <>
+                <div className="testimonial" key={`course_testimonial_${index}`}>
+                  <div className="testimonial-text">
+                    <p>{data}</p>
+                  </div>
+                </div>
+              </>
+            )
+          })
+        } 
+        {(course.markdownRemark.frontmatter.instructor && course.markdownRemark.frontmatter.instructor_bio) ?
+          <>
+          <h4 className="instructor">About Instructor {course.markdownRemark.frontmatter.instructor}</h4>
+          {course.markdownRemark.frontmatter.instructor_image ? 
+            <BioImage
+              className="instructor-img"
+              alt={`Bio image for ${course.markdownRemark.frontmatter.instructor}`}
+              filename={course.markdownRemark.frontmatter.instructor_image}
+             />
+           : null}
+          <div dangerouslySetInnerHTML={{ __html: course.markdownRemark.frontmatter.instructor_bio }}></div>
+          </>
+          : null
+        }
       </div>
     </Layout>
   )
@@ -65,9 +94,6 @@ query ($slug: String!) {
     html
     frontmatter {
       city
-      contact_email
-      contact_name
-      contact_phone
       end_date
       end_time
       event_image
@@ -76,6 +102,7 @@ query ($slug: String!) {
       instructor
       instructor_bio
       instructor_image
+      testimonials
       location_title
       start_date
       start_time

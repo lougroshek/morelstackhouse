@@ -12,11 +12,11 @@ const CoursesListBlock = ({node}) => {
 
   const formatLocation = (city, state) => {
     if (city.length >= 1 && state.length >= 1) {
-      return `in ${city}, ${state}`
+      return `${city}, ${state}`
     } else if (city.length >= 1 && state.length < 1) {
-      return `in ${city}`
+      return `${city}`
     } else if (city.length < 1 && state.length >= 1) {
-      return `in ${state}`
+      return `${state}`
     } else {
       return ``
     }
@@ -78,7 +78,9 @@ const CoursesListBlock = ({node}) => {
         sm={{ size: 10, offset: 1 }}
         md={{ size: 5, offset: 0 }}
         className="event-details">
-        <h4 className="event-title">{node.frontmatter.title}</h4>
+        <h4 className="event-title">
+          <Link to={`/events/${node.fields.slug}`}>{node.frontmatter.title}</Link>
+        </h4>
         <h5 className="event-location">{formatLocation(node.frontmatter.city, node.frontmatter.state)}</h5>
         <span className="event-date-range">{formatDate(node.frontmatter.start_date, node.frontmatter.end_date)}</span>
         <span className="event-date-range">{formatTimeDuration(node.frontmatter.start_date, node.frontmatter.end_date, node.frontmatter.start_time, node.frontmatter.end_time)}</span>
