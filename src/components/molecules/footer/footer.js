@@ -11,8 +11,7 @@ const Footer = ({data}) => {
   const headerHeight = 89
 
   const scrollToTop = () => {
-    console.log('scrollToTop');
-    // e.preventDefault();
+    // console.log('scrollToTop');
     window.scrollTo({
       top: 0,
       behavior: 'smooth'

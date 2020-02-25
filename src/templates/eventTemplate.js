@@ -54,9 +54,9 @@ const EventTemplate = ({ data: course , location }) => {
         <span className="event-date-range">{formatDate(course.markdownRemark.frontmatter.start_date, course.markdownRemark.frontmatter.end_date, course.markdownRemark.frontmatter.start_time, course.markdownRemark.frontmatter.end_time)}</span>
         <GoogleMapComponent input={course.markdownRemark.frontmatter.geojson} />
         <div className="event-desc" dangerouslySetInnerHTML={{ __html: course.markdownRemark.html }}></div>
-        { course.markdownRemark.frontmatter.testimonials ?
+        { !!course.markdownRemark.frontmatter.testimonials ?
           <h4>What Others have Said About This Work</h4> : null }
-        { course.markdownRemark.frontmatter.testimonials.map((data, index) => {
+        { !!course.markdownRemark.frontmatter.testimonials ? course.markdownRemark.frontmatter.testimonials.map((data, index) => {
             return (
               <>
                 <div className="testimonial" key={`course_testimonial_${index}`}>
@@ -66,8 +66,8 @@ const EventTemplate = ({ data: course , location }) => {
                 </div>
               </>
             )
-          })
-        } 
+          }) : null
+        }
         {(course.markdownRemark.frontmatter.instructor && course.markdownRemark.frontmatter.instructor_bio) ?
           <>
           <h4 className="instructor">About Instructor {course.markdownRemark.frontmatter.instructor}</h4>
