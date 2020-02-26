@@ -67,7 +67,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           property: `og:url`,
-          content: `https://morelstackhouse.com`,
+          content: `${site.siteMetadata.url}`,
         },
         {
           name: `twitter:card`,
