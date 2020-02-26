@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from "prop-types"
 import { MdKeyboardArrowUp } from "react-icons/md";
 import { FiFacebook, FiMail } from "react-icons/fi";
+import smoothscroll from 'smoothscroll-polyfill';
 
+// kick off the polyfill!
+smoothscroll.polyfill();
 
 const Footer = ({data}) => {
   // addIcons(bundle)
