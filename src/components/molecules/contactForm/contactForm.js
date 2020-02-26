@@ -40,7 +40,7 @@ const ContactForm = () => {
         .required('Required')
     }),
     onSubmit: (values, { setSubmitting }) => {
-      console.log('onSubmit()', values)
+      // console.log('onSubmit()', values)
       // For testing form funct locally.
       // setTimeout(() => {
       //   alert(JSON.stringify(values, null, 2));
@@ -63,6 +63,8 @@ const ContactForm = () => {
         formik.setSubmitting(false);
         // Enable display of submission success message.
         setIsSubmitted(true);
+        // Clear form fields
+        formik.resetForm();
       })
       .catch(error => {
         // Catch submission errors.
@@ -87,6 +89,9 @@ const ContactForm = () => {
       data-netlify="true"
       >
       <input type="hidden" name="form-name" value="contact" />
+      <p class="hidden">
+        <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+      </p>
       <div className="form-group">
         <label htmlFor="firstName">First Name</label>
         <input

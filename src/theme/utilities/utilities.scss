@@ -1,9 +1,9 @@
 @mixin grayscale {
   filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
-  filter: blur(0.35px) grayscale(98%);
+  filter: blur(0.15px) grayscale(98%);
 }
 
 @mixin grayscalelight {
   filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
-  filter: blur(0.35px) grayscale(98%) brightness(1.12);
+  filter: blur(0.15px) grayscale(98%) brightness(1.12);
 }
