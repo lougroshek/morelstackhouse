@@ -10,6 +10,8 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
+import SocialHomeImage from './atoms/socialHomeImage'
+
 function SEO({ description, lang, meta, title }) {
   const { site } = useStaticQuery(
     graphql`
@@ -20,6 +22,7 @@ function SEO({ description, lang, meta, title }) {
             description
             url
             author
+            socialMediaImage
           }
         }
       }
@@ -54,7 +57,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           property: `og:image`,
-          content: `/static/images/morel-stackhouse.jpg`,
+          content: `${site.siteMetadata.url}${site.siteMetadata.socialMediaImage}`,
         },
         {
           property: `og:url`,
@@ -78,7 +81,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:image`,
-          content: `/static/images/morel-stackhouse.jpg`,
+          content: `${site.siteMetadata.url}${site.siteMetadata.socialMediaImage}`,
         },
         {
           name: `twitter:card`,
