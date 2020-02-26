@@ -1,6 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import "typeface-lato"
+import "typeface-muli"
 
 import Header from "./molecules/header/header"
 import Footer from "./molecules/footer/footer"
