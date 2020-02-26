@@ -85,7 +85,7 @@ const CoursesListBlock = ({node}) => {
         <span className="event-date-range">{formatDate(node.frontmatter.start_date, node.frontmatter.end_date)}</span>
         <span className="event-date-range">{formatTimeDuration(node.frontmatter.start_date, node.frontmatter.end_date, node.frontmatter.start_time, node.frontmatter.end_time)}</span>
         <span className="event-location-details">
-          {node.frontmatter.location_title}
+          {node.frontmatter.location_title}&nbsp;
           <GoogleMapLink geojson={node.frontmatter.geojson} />
         </span>
         <div className="event-excerpt">{node.frontmatter.excerpt}</div>

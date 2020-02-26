@@ -1,0 +1,136 @@
+.page-type-course {
+  .heading {
+    padding-top: 3rem;
+    @include media-breakpoint-up(lg) {
+      padding-top: 5rem;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+  }
+  .row {
+    margin: 3rem 0;
+    &.course-list-heading {
+      margin: 4rem 0 0;
+      h2 {
+        margin-bottom: 0;
+      }
+    }
+    .event-desc {
+      margin-top: 1.75rem;
+      @include media-breakpoint-up(md) {
+        margin-top: 3rem;
+      }
+      .instructor {
+        margin-bottom: 1rem;
+      }
+    }
+    .event-details {
+      margin-top: 1.75rem;
+      @include media-breakpoint-up(md) {
+        margin-top: 3rem;
+      }
+      h4 {
+        margin-top: 1rem;
+        @include media-breakpoint-up(md) {
+          margin-top: 0;
+        }
+      }
+      span {
+        display: block;
+        width: 100%;
+      }
+      .event-date-range {
+        margin-top: 1rem;
+      }
+      .event-location-details {
+        margin-top: 1rem;
+      }
+    }
+  }
+  h1 {
+    text-align: center;
+  }
+  h2 {
+    // margin-bottom: 1.5rem;
+  }
+  img {
+    @include grayscale;
+  }
+  .btn {
+    margin: 0.5rem 0 0;
+    &#scroll_to_courses {
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      @include media-breakpoint-up(lg) {
+        position: absolute;
+        right: 2rem;
+        top: -1rem;
+      }
+    }
+  }
+  .instructor-img-parent {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    @include media-breakpoint-up(md) {
+      float: left;
+      margin-right: 1rem;
+    }
+  }
+  .event-google-map {
+    height: 300px !important;
+    min-height: 300px;
+    width: auto;
+    margin-top: 1rem;
+    @include media-breakpoint-up(lg) {
+      height: 300px !important;
+      min-height: 300px;
+      margin-top: 2rem;
+    }
+  }
+  .react-add-to-calendar {
+    display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    // width: auto;
+    .react-add-to-calendar__button {
+      display: inline-block;
+      border-radius: 0;
+      color: $white;
+      background: $black;
+      font-weight: 600;
+      padding: 10px 20px;
+      color: #fff;
+      background-color: #1a1a1a;
+      border-color: #1a1a1a;
+      // border: 1px solid $gray-700;
+      text-transform: uppercase;
+      i {
+        display: none;
+      }
+    }
+    .react-add-to-calendar__dropdown {
+      width: 100%;
+      z-index: 3000;
+      top: 42px;
+      ul {
+        padding-left: 0.85rem;
+        li {
+          text-transform: uppercase;
+          padding: 5px 0;
+          a {
+            i {
+               display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

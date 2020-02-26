@@ -58,7 +58,7 @@ const EventsPage = ({ location }) => {
     // const goTo = document.querySelector()
     const element = document.getElementById('course_list_target');
     const position = element.getBoundingClientRect();
-    const y = position.top;
+    const y = position.top - 100;
     window.scrollTo({
       top: y,
       behavior: 'smooth'
@@ -76,14 +76,7 @@ const EventsPage = ({ location }) => {
             sm={{ size: 10, offset: 1 }}
             >
             <h1>Courses with Morel</h1>
-          </Col>
-          <Col 
-            xs={{ size: 12, offset: 0 }}
-            sm={{ size: 4, offset: 3 }}
-            md={{ size: 5, offset: 7 }}
-            lg={{ size: 3, offset: 8 }}
-            className="scroll-to-courses">
-            <Button color="secondary" onClick={scrollToCourses}>Scroll to Courses
+            <Button id="scroll_to_courses" color="secondary" onClick={scrollToCourses}>Scroll to Courses
               <MdKeyboardArrowDown/>
             </Button>{' '}
           </Col>
@@ -95,6 +88,8 @@ const EventsPage = ({ location }) => {
             >
             <CoursesTopImage/>
           </Col>
+        </Row>
+        <Row>
           <Col className="col-desc align-items-center"
             xs={{ size: 12, offset: 0 }}
             sm={{ size: 10, offset: 1 }}
@@ -124,7 +119,7 @@ const EventsPage = ({ location }) => {
         query={getEventsData}
         render={data => (
           <>
-            <Row>
+            <Row className="course-list-heading">
               <Col
                 xs={{ size: 12, offset: 0 }}
                 sm={{ size: 10, offset: 1 }}
@@ -132,7 +127,7 @@ const EventsPage = ({ location }) => {
                 <h2 name="course_list_target" id="course_list_target">Upcoming Courses</h2>
               </Col>
             </Row>
-            <div className="events-list">
+            <div className="events-list events-upcoming">
               {data.allMarkdownRemark.edges
                 // Filter all entries *ahead of* today.
                 .filter(({node}) => { return new Date(node.frontmatter.start_date) >= new Date() })
@@ -140,18 +135,19 @@ const EventsPage = ({ location }) => {
                   <CoursesListBlock node={node} key={node.id} />
               ))}
             </div>
-            <Row>
-              <Col 
+            <Row className="course-list-heading">
+              <Col
                 xs={{ size: 12, offset: 0 }}
                 sm={{ size: 10, offset: 1 }}
                 >
                 <h2>Past Courses</h2>
               </Col>
             </Row>
-            <div className="events-list">
+            <div className="events-list events-past">
               {data.allMarkdownRemark.edges
                 // Filter all entries *past* today.
                 .filter(({node}) => { return new Date(node.frontmatter.start_date) < new Date() })
+                .reverse()
                 .map(({node}) => (
                   <CoursesListBlock node={node} key={node.id} />
               ))}

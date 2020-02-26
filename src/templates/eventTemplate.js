@@ -1,6 +1,9 @@
 import React from 'react'
 import moment from 'moment'
 import { graphql } from "gatsby"
+import { Row, Col, Button } from 'reactstrap';
+import AddToCalendar from 'react-add-to-calendar';
+import 'react-add-to-calendar/dist/react-add-to-calendar.css'
 
 import GoogleMapComponent from "./../components/atoms/googleMapComponent"
 import defaultImg from "./../images/placeholder.png"
@@ -9,33 +12,72 @@ import BioImage from "./../components/atoms/bioImage"
 import Layout from './../components/layout'
 import SEO from "../components/seo"
 
-import "./eventTemplate.scss"
+import './eventTemplate.scss'
 
 const EventTemplate = ({ data: course , location }) => {
 
+  // Construct event strings for add-to-calendar button
+  const event_start = `${course.markdownRemark.frontmatter.start_date}T${moment(course.markdownRemark.frontmatter.start_time, 'hh:mm a').format( "HH:mm:ss")}${course.markdownRemark.frontmatter.time_zone}`;
+  const event_end = `${course.markdownRemark.frontmatter.end_date}T${moment(course.markdownRemark.frontmatter.end_time, 'hh:mm a').format( "HH:mm:ss")}${course.markdownRemark.frontmatter.time_zone}`;
+  // Construct event object for add-to-calendar button
+  const event = {
+    title: course.markdownRemark.frontmatter.title,
+    description: course.markdownRemark.frontmatter.excerpt,
+    location:
+      `${course.markdownRemark.frontmatter.location_title}, ${course.markdownRemark.frontmatter.street_address},
+      ${course.markdownRemark.frontmatter.city},
+      ${course.markdownRemark.frontmatter.state}
+      ${course.markdownRemark.frontmatter.zip}`,
+    startTime: event_start,
+    endTime: event_end
+  };
+  const icon = { textOnly: 'none' };
+
   const formatLocation = (city, state) => {
     if (city.length >= 1 && state.length >= 1) {
-      return `in ${city}, ${state}`
+      return `${city}, ${state}`
     } else if (city.length >= 1 && state.length < 1) {
-      return `in ${city}`
+      return `${city}`
     } else if (city.length < 1 && state.length >= 1) {
-      return `in ${state}`
+      return `${state}`
     } else {
       return ``
     }
   }
 
-  const formatDate = (startDate, endDate, startTime, endTime) => {
+  const formatTimeDuration = (startDate, endDate, startTime, endTime) => {
+    const start = moment(startTime, "h:mm a");
+    const end = moment(endTime, "h:mm a");
+    if (start.isValid()) {
+      if (end.isValid()) {
+        if (startDate !== endDate) {
+           return `${start.format('h:mm a')} - ${end.format('h:mm a')} daily`
+        } else {
+          return `${start.format('h:mm a')} - ${end.format('h:mm a')}`
+        }
+      } else {
+        return `${start.format('h:mm a')}`
+      }
+    } else {
+      return `Time format not valid. Contact the site administrator.`
+    }
+  }
+
+  const formatDate = (startDate, endDate) => {
     // console.log('formatDate()')
-    const start = moment(startDate + ' ' + startTime, "YYYY-MM-DD HH:mm a");
-    const end = moment(endDate + ' ' + endTime, "YYYY-MM-DD HH:mm a");
+    const start = moment(startDate, "YYYY-MM-DD");
+    const end = moment(endDate, "YYYY-MM-DD");
     if (start.isValid()) {
       // console.log('start is valid')
       if (end.isValid()) {
         // console.log('end is valid')
-        return `${start.format('LLLL')} - ${end.format('LLLL')}`
+        if (startDate === endDate) {
+          return `${start.format('dddd, MMMM Do, YYYY')}`
+        } else {
+          return `${start.format('dddd, MMMM Do')} - ${end.format('dddd, MMMM Do, YYYY')}`
+        }
       } else {
-        return `${start.format('LLLL')}`
+        return `${start.format('dddd, MMMM Do, YYYY')}`
       }
     } else {
       return false;
@@ -44,45 +86,83 @@ const EventTemplate = ({ data: course , location }) => {
     return (
     <Layout location={location} pageType="course">
       <SEO title={course.markdownRemark.frontmatter.title} />
-      <div className="course-event" key={`course_event_${course.id}`}>
-        <CoursesImage
-          alt={`Event image for ${course.markdownRemark.frontmatter.title}, ${course.markdownRemark.frontmatter.start_date}`}
-          filename={course.markdownRemark.frontmatter.event_image ? course.markdownRemark.frontmatter.event_image : defaultImg}
-         />
-        <h4 className="event-title">{course.markdownRemark.frontmatter.title}</h4>
-        <h5 className="event-location">{formatLocation(course.markdownRemark.frontmatter.city, course.markdownRemark.frontmatter.state)}</h5>
-        <span className="event-date-range">{formatDate(course.markdownRemark.frontmatter.start_date, course.markdownRemark.frontmatter.end_date, course.markdownRemark.frontmatter.start_time, course.markdownRemark.frontmatter.end_time)}</span>
-        <GoogleMapComponent input={course.markdownRemark.frontmatter.geojson} />
-        <div className="event-desc" dangerouslySetInnerHTML={{ __html: course.markdownRemark.html }}></div>
-        { !!course.markdownRemark.frontmatter.testimonials ?
-          <h4>What Others have Said About This Work</h4> : null }
-        { !!course.markdownRemark.frontmatter.testimonials ? course.markdownRemark.frontmatter.testimonials.map((data, index) => {
-            return (
-              <>
-                <div className="testimonial" key={`course_testimonial_${index}`}>
-                  <div className="testimonial-text">
-                    <p>{data}</p>
-                  </div>
-                </div>
-              </>
-            )
-          }) : null
-        }
-        {(course.markdownRemark.frontmatter.instructor && course.markdownRemark.frontmatter.instructor_bio) ?
-          <>
-          <h4 className="instructor">About Instructor {course.markdownRemark.frontmatter.instructor}</h4>
-          {course.markdownRemark.frontmatter.instructor_image ? 
-            <BioImage
-              className="instructor-img"
-              alt={`Bio image for ${course.markdownRemark.frontmatter.instructor}`}
-              filename={course.markdownRemark.frontmatter.instructor_image}
+        <Row className="heading">
+          <Col 
+            xs={{ size: 12, offset: 0 }}
+            sm={{ size: 10, offset: 1 }}
+            >
+            <h1>{course.markdownRemark.frontmatter.title}</h1>
+            <h2>{formatDate(course.markdownRemark.frontmatter.start_date, course.markdownRemark.frontmatter.end_date, course.markdownRemark.frontmatter.start_time, course.markdownRemark.frontmatter.end_time)}</h2>
+          </Col>
+        </Row>
+        <Row>
+          <Col
+            xs={{ size: 12, offset: 0, order: 1 }}
+            sm={{ size: 10, offset: 1 }}
+            md={{ size: 6, offset: 3 }}
+            className="event-img">
+            <CoursesImage
+              alt={`Event image for ${course.markdownRemark.frontmatter.title}, ${course.markdownRemark.frontmatter.start_date}`}
+              filename={course.markdownRemark.frontmatter.event_image ? course.markdownRemark.frontmatter.event_image : defaultImg}
              />
-           : null}
-          <div dangerouslySetInnerHTML={{ __html: course.markdownRemark.frontmatter.instructor_bio }}></div>
-          </>
-          : null
-        }
-      </div>
+          </Col>
+          <Col
+            xs={{ size: 12, offset: 0, order: 3 }}
+            sm={{ size: 10, offset: 1 }}
+            md={{ size: 6, offset: 1, order: 2 }}
+            className="event-desc">
+            <div className="event-markdown" dangerouslySetInnerHTML={{ __html: course.markdownRemark.html }}></div>
+              {(course.markdownRemark.frontmatter.instructor && course.markdownRemark.frontmatter.instructor_bio) ?
+                <>
+                <h4 className="instructor">About Instructor {course.markdownRemark.frontmatter.instructor}</h4>
+                {course.markdownRemark.frontmatter.instructor_image ? 
+                  <div className="instructor-img-parent">
+                    <BioImage
+                      className="instructor-img"
+                      alt={`Bio image for ${course.markdownRemark.frontmatter.instructor}`}
+                      filename={course.markdownRemark.frontmatter.instructor_image}
+                     />
+                   </div>
+                 : null}
+                <div dangerouslySetInnerHTML={{ __html: course.markdownRemark.frontmatter.instructor_bio }}></div>
+                </>
+                : null
+              }
+              { !!course.markdownRemark.frontmatter.testimonials ?
+                <h4>What Others have Said About This Work</h4> : null }
+              { !!course.markdownRemark.frontmatter.testimonials ? course.markdownRemark.frontmatter.testimonials.map((data, index) => {
+                  return (
+                    <>
+                      <div className="testimonial" key={`course_testimonial_${index}`}>
+                        <div className="testimonial-text">
+                          <p>{data}</p>
+                        </div>
+                      </div>
+                    </>
+                  )
+                }) : null
+              }
+          </Col>
+          <Col 
+            xs={{ size: 12, offset: 0, order: 2 }}
+            sm={{ size: 10, offset: 1 }}
+            md={{ size: 4, offset: 0, order: 3 }}
+            className="event-details">
+              <h4>Getting There</h4>
+              <span className="event-date-range">{formatDate(course.markdownRemark.frontmatter.start_date, course.markdownRemark.frontmatter.end_date)}</span>
+              <span className="event-date-time">{formatTimeDuration(course.markdownRemark.frontmatter.start_date, course.markdownRemark.frontmatter.end_date, course.markdownRemark.frontmatter.start_time, course.markdownRemark.frontmatter.end_time)}</span>
+              <AddToCalendar event={event} className="btn btn-primary" />
+              <span className="event-location-details">
+                {course.markdownRemark.frontmatter.location_title}
+              </span>
+              <span className="event-street-address">
+                {course.markdownRemark.frontmatter.street_address}
+              </span>
+              <span className="event-city">{formatLocation(course.markdownRemark.frontmatter.city, course.markdownRemark.frontmatter.state)}
+              {course.markdownRemark.frontmatter.zip}</span>
+              <GoogleMapComponent input={course.markdownRemark.frontmatter.geojson} />
+          </Col>
+        </Row>
     </Layout>
   )
 }
@@ -96,6 +176,7 @@ query ($slug: String!) {
       city
       end_date
       end_time
+      time_zone
       event_image
       excerpt
       geojson
