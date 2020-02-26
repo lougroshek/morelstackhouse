@@ -37,7 +37,7 @@ const Header = ({ siteTitle, menu, location }) => {
       setToggleMenu(false)
     }
   }
-  
+
   useEffect(() => {
     ['scroll', 'resize', 'load'].forEach(function(e) {
       window.addEventListener(e, logoSizeHandler);

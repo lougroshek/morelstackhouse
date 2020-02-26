@@ -4,9 +4,6 @@ import { MdKeyboardArrowUp } from "react-icons/md";
 import { FiFacebook, FiMail } from "react-icons/fi";
 import smoothscroll from 'smoothscroll-polyfill';
 
-// kick off the polyfill!
-smoothscroll.polyfill();
-
 const Footer = ({data}) => {
   // addIcons(bundle)
 
@@ -31,6 +28,9 @@ const Footer = ({data}) => {
   }
 
   useEffect(() => {
+    // Kick off the polyfill!
+    smoothscroll.polyfill();
+    // Listen for window events to manage footer state.
     ['scroll', 'resize', 'load'].forEach(function(e) {
       window.addEventListener(e, logoSizeHandler);
     })
