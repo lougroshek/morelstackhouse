@@ -18,6 +18,7 @@ function SEO({ description, lang, meta, title }) {
           siteMetadata {
             title
             description
+            url
             author
           }
         }
@@ -52,6 +53,14 @@ function SEO({ description, lang, meta, title }) {
           content: `website`,
         },
         {
+          property: `og:image`,// todo
+          content: `/images/morel-stackhouse.jpg`,
+        },
+        {
+          property: `og:url`,
+          content: `https://morelstackhouse.com`,
+        },
+        {
           name: `twitter:card`,
           content: `summary`,
         },
@@ -66,6 +75,14 @@ function SEO({ description, lang, meta, title }) {
         {
           name: `twitter:description`,
           content: metaDescription,
+        },
+        {
+          name: `twitter:image`,
+          content: `/images/morel-stackhouse.jpg`,
+        },
+        {
+          name: `twitter:card`, // todo
+          content: `summary_large_image`,
         },
       ].concat(meta)}
     />

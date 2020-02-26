@@ -7,6 +7,7 @@ module.exports = {
     title: `Morel Stackhouse`,
     subtitle: `Ortho-Bionomy® practice and instruction`,
     description: `Web site for Ortho-Bionomy practice and instruction by Morel Stackhouse`,
+    url: `https://morelstackhouse.com`,
     author: `@amygroshek`,
     authorLink: `https://hire.amygroshek.com`,
     copyrightDate: `2018`,
