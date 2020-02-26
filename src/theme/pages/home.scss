@@ -1,6 +1,9 @@
 .page-type-home {
   .jumbotron {
-    height: 92vh;
+    height: 72vh;
+    @include media-breakpoint-up(md) {
+      height: 92vh;
+    }
     overflow: hidden;
     // background: gray;
     &.row {
@@ -14,14 +17,22 @@
       }
       .col {
         position: absolute;
+        left: 0;
         h1 {
-          font-size: 4rem;
           font-weight: 600;
+          font-size: 2rem;
+          @include media-breakpoint-up(md) {
+            font-size: 4rem;
+          }
         }
         p {
-          font-size: 0.8rem;
+          font-size: 0.6rem;
           font-weight: 550;
-          letter-spacing: 4px;
+          letter-spacing: 3px;
+          @include media-breakpoint-up(md) {
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+          }
         }
         h1,
         h2,
@@ -35,7 +46,12 @@
   }
   .testimonials {
     .testimonial {
-      padding-top: 5rem;
+      padding-top: 3rem;
+      margin-top: 0;
+      @include media-breakpoint-up(md) {
+        margin-top: inherit;
+        padding-top: 5rem;
+      }
     }
   }
 }
