@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 import { graphql } from "gatsby"
-import { Row, Col, Button } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import AddToCalendar from 'react-add-to-calendar';
 import 'react-add-to-calendar/dist/react-add-to-calendar.css'
 
@@ -31,7 +31,6 @@ const EventTemplate = ({ data: course , location }) => {
     startTime: event_start,
     endTime: event_end
   };
-  const icon = { textOnly: 'none' };
 
   const formatLocation = (city, state) => {
     if (city.length >= 1 && state.length >= 1) {
@@ -129,7 +128,7 @@ const EventTemplate = ({ data: course , location }) => {
                 : null
               }
               { !!course.markdownRemark.frontmatter.testimonials ?
-                <h4>What Others have Said About This Work</h4> : null }
+                <h4 className="testimonials-heading">What Others have Said About This Work</h4> : null }
               { !!course.markdownRemark.frontmatter.testimonials ? course.markdownRemark.frontmatter.testimonials.map((data, index) => {
                   return (
                     <>

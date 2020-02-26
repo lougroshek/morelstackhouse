@@ -31,7 +31,7 @@ Posture is how we live in our bodies - the sum total of everything that has happ
  - Techniques and exercises for promoting balanced posture within your own body, as well as for working with clients.
  - Techniques to work with spinal curvatures and scoliosis.
  - Post-techniques for the pelvis, spine and ribcage. Post Techniques exercise the spine and the intervertebral disks. They can be used for both assessment and release, as well as integration of the work done in a session.
- 
+
 "If you don’t work with your clients posture, they will never get better"  
 ~ Arthur Lincoln Pauls, D.O., Founder of Ortho-Bionomy
 

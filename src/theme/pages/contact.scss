@@ -12,7 +12,17 @@
   }
 }
 main.page-type-contact {
-  padding-top: 3rem;
+  // padding-top: 3rem;
+  .heading {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    @include media-breakpoint-up(lg) {
+      padding-top: 5rem;
+    }
+    h1 {
+      text-align: center;
+    }
+  }
 
   .event-google-map {
     width: 100%;

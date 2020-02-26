@@ -24,6 +24,19 @@
       .instructor {
         margin-bottom: 1rem;
       }
+      .testimonials-heading {
+        clear: both;
+        margin-top: 1.5rem;
+      }
+      .testimonial {
+        margin-top: 1.25rem;
+        @include media-breakpoint-up(md) {
+          width: 80%
+        }
+        .testimonial-text {
+          min-height: 35px;
+        }
+      }
     }
     .event-details {
       margin-top: 1.75rem;

@@ -42,9 +42,8 @@ Ortho-Bionomy Fundamentals: Extremities is a foundation and prerequisite class f
 
 ### Tuition
 
-$300 before April 24, 2020&ast;
-
-$350 after April 24, 2020
+ - $300 before April 24, 2020&ast;
+ - $350 after April 24, 2020
 
 &ast; Society of Ortho-Bionomy members receive an additional $10 discount.
 
