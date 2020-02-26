@@ -16,7 +16,6 @@ import Img from "gatsby-image"
  // Note: You can change "images" to whatever you'd like.
 
  const CoursesImage = props => (
-   // const maxWidth = props.maxWidth;
    <StaticQuery
      query={graphql`
        query {

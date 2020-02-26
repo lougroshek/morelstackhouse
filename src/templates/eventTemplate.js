@@ -86,7 +86,7 @@ const EventTemplate = ({ data: course , location }) => {
     <Layout location={location} pageType="course">
       <SEO title={course.markdownRemark.frontmatter.title} />
         <Row className="heading">
-          <Col 
+          <Col
             xs={{ size: 12, offset: 0 }}
             sm={{ size: 10, offset: 1 }}
             >
