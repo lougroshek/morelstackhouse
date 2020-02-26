@@ -6,14 +6,14 @@ module.exports = {
   siteMetadata: {
     title: `Morel Stackhouse`,
     subtitle: `Ortho-Bionomy® practice and instruction`,
-    description: `Web site for Ortho-Bionomy practice and instruction by Morel Stackhouse`,
+    description: `Ortho-Bionomy practice and instruction by Morel Stackhouse`,
     url: `https://eloquent-wiles-e48dda.netlify.com`, // `https://morelstackhouse.com`,
     socialMediaImage: `/static/images/morel-stackhouse.jpg`,
     author: `@amygroshek`,
     authorLink: `https://hire.amygroshek.com`,
     copyrightDate: `2018`,
     contactLocation: `{"type":"Point","coordinates":[-89.38916257697494,43.056114624153096]}`,
-    siteUrl: `https://morelstackhouse.com`,
+    facebookAppID: `214302443050090`,
     menu: [
       {
         title: `Sessions`,
@@ -60,10 +60,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `morelstackhouse`,
+        short_name: `morelstackhouse`,
         start_url: `/`,
-        background_color: `#663399`,
+        background_color: `#fff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
@@ -75,7 +75,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         // The property ID; the tracking code won't be generated without it
-        trackingId: "YOUR_GOOGLE_ANALYTICS_TRACKING_ID",
+        trackingId: `${process.env.GOOGLE_ANALYTICS_TRACKING_ID}`,
         // Defines where to place the tracking script - `true` in the head and `false` in the body
         head: false,
         // Setting this parameter is optional
@@ -83,15 +83,15 @@ module.exports = {
         // Setting this parameter is also optional
         respectDNT: true,
         // Avoids sending pageview hits from custom paths
-        exclude: ["/preview/**", "/do-not-track/me/too/"],
+        exclude: ["/content/**", "/images/**"],
         // Delays sending pageview hits on route update (in milliseconds)
         pageTransitionDelay: 0,
         // Enables Google Optimize using your container Id
         optimizeId: "YOUR_GOOGLE_OPTIMIZE_TRACKING_ID",
         // Enables Google Optimize Experiment ID
-        experimentId: "YOUR_GOOGLE_EXPERIMENT_ID",
+        // experimentId: "YOUR_GOOGLE_EXPERIMENT_ID",
         // Set Variation ID. 0 for original 1,2,3....
-        variationId: "YOUR_GOOGLE_OPTIMIZE_VARIATION_ID",
+        // variationId: "YOUR_GOOGLE_OPTIMIZE_VARIATION_ID",
         // Any additional optional fields
         sampleRate: 5,
         siteSpeedSampleRate: 10,

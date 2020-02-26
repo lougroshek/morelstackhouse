@@ -41,16 +41,3 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 }
-
-// Creates file paths for blog posts based off of markdown files
-// exports.onCreateNode = ({ node, getNode, actions }) => {
-//   const { createNodeField } = actions
-//   if (node.internal.type === "MarkdownRemark" && node.frontmatter.type === "post") {
-//     const slug = createFilePath({ node, getNode, basePath: 'posts'})
-//     createNodeField({
-//       node,
-//       name: 'slug',
-//       value: slug
-//     })
-//   }
-// }

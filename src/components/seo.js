@@ -21,6 +21,7 @@ function SEO({ description, lang, meta, title }) {
             url
             author
             socialMediaImage
+            facebookAppID
           }
         }
         placeholderImage: file(relativePath: {eq: "morel-stackhouse.jpg"}) {
@@ -68,6 +69,10 @@ function SEO({ description, lang, meta, title }) {
         {
           property: `og:url`,
           content: `${site.siteMetadata.url}`,
+        },
+        {
+          property: `fb:app_id`,
+          content: `${site.siteMetadata.facebookAppID}`,
         },
         {
           name: `twitter:card`,
