@@ -53,8 +53,8 @@ function SEO({ description, lang, meta, title }) {
           content: `website`,
         },
         {
-          property: `og:image`,// todo
-          content: `/images/morel-stackhouse.jpg`,
+          property: `og:image`,
+          content: `/static/images/morel-stackhouse.jpg`,
         },
         {
           property: `og:url`,
@@ -78,10 +78,10 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:image`,
-          content: `/images/morel-stackhouse.jpg`,
+          content: `/static/images/morel-stackhouse.jpg`,
         },
         {
-          name: `twitter:card`, // todo
+          name: `twitter:card`,
           content: `summary_large_image`,
         },
       ].concat(meta)}

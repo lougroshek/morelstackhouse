@@ -50,7 +50,7 @@ const Footer = ({data}) => {
           <p>Society of Ortho-Bionomy International® is a registered trademark that indicates membership in the Society, and it is used with permission.</p>
           <p>This site was <a href={data.site.siteMetadata.authorLink}>built ♥ with love</a>.</p>
         </div>
-        <div className="up-button" onClick={scrollToTop}>
+        <div className="up-button" onClick={scrollToTop} onSelect={scrollToTop}>
           <MdKeyboardArrowUp/>
           <span>SCROLL TO TOP</span>
         </div>
