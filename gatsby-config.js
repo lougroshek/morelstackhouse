@@ -7,6 +7,7 @@ module.exports = {
     title: `Morel Stackhouse`,
     subtitle: `Ortho-Bionomy® practice and instruction`,
     description: `Ortho-Bionomy practice and instruction by Morel Stackhouse`,
+    keywords: `ortho-bionomy, orthbionomy, massage, spine, back, gentle, healing, instruction, courses, classes, learning, education, ortho-bionomy instruction, ortho-bionomy classes, learn ortho-bionomy`,
     siteUrl: `https://eloquent-wiles-e48dda.netlify.com`, // `https://morelstackhouse.com`,
     socialMediaImage: `/static/images/morel-stackhouse.jpg`,
     author: `@amygroshek`,
