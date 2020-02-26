@@ -18,7 +18,7 @@ function SEO({ description, lang, meta, title }) {
           siteMetadata {
             title
             description
-            url
+            siteUrl
             author
             socialMediaImage
             facebookAppID
@@ -68,7 +68,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           property: `og:url`,
-          content: `${site.siteMetadata.url}`,
+          content: `${site.siteMetadata.siteUrl}`,
         },
         {
           property: `fb:app_id`,

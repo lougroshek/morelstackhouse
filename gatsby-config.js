@@ -7,7 +7,7 @@ module.exports = {
     title: `Morel Stackhouse`,
     subtitle: `Ortho-Bionomy® practice and instruction`,
     description: `Ortho-Bionomy practice and instruction by Morel Stackhouse`,
-    url: `https://eloquent-wiles-e48dda.netlify.com`, // `https://morelstackhouse.com`,
+    siteUrl: `https://eloquent-wiles-e48dda.netlify.com`, // `https://morelstackhouse.com`,
     socialMediaImage: `/static/images/morel-stackhouse.jpg`,
     author: `@amygroshek`,
     authorLink: `https://hire.amygroshek.com`,
