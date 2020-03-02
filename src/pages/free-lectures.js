@@ -3,7 +3,7 @@ import { graphql, StaticQuery } from "gatsby"
 import { Row, Col } from 'reactstrap';
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import SEO from "../components/atoms/seo"
 import CoursesListBlock from "./../components/molecules/coursesListBlock/coursesListBlock"
 
 const getEventsData = graphql`
@@ -46,11 +46,19 @@ const getEventsData = graphql`
 
 const EventsPage = ({ location }) => {
 
-  const pageTitle = "Courses";
+  const pageMeta = {
+    title: 'Free Lectures',
+    type: 'free-lectures',
+    location: location,
+    description: null,
+    keywords: `ortho-bionomy, orthbionomy, bodywork, body work, massage, spine, back, gentle, healing, instruction, free-lectures, morel, stackhouse`,
+    image: null,
+    url: `${location.href}`
+  }
 
   return (
-    <Layout location={ location } pageType="free-lectures">
-      <SEO title={pageTitle} />
+    <Layout location={ pageMeta.location } pageType={ pageMeta.type }>
+      <SEO meta={{ ...pageMeta }} />
       <Row className="heading">
         <Col
           xs={{ size: 12, offset: 0 }}

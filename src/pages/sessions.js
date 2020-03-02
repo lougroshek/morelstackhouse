@@ -3,24 +3,33 @@ import { Row, Col } from 'reactstrap';
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import SEO from "../components/atoms/seo"
 import SessionsFirstImage from "../components/atoms/sessionsFirstImage"
 import SessionsSecondImage from "../components/atoms/sessionsSecondImage"
 
 const SessionsPage = ({ location }) => {
+  const pageMeta = {
+    title: 'Sessions',
+    type: 'sessions',
+    location: location,
+    description: null,
+    keywords: `ortho-bionomy, orthbionomy, bodywork, body work, massage, spine, back, gentle, healing, instruction, sessions, morel, stackhouse`,
+    image: null,
+    url: `${location.href}`
+  }
 
   return (
-    <Layout location={ location } pageType="sessions">
-      <SEO title="Sessions" />
+    <Layout location={ pageMeta.location } pageType={ pageMeta.type }>
+      <SEO meta={{ ...pageMeta }} />
       <Row className="heading">
-        <Col 
+        <Col
           xs={{ size: 12, offset: 0 }}
           sm={{ size: 10, offset: 1 }}
           md={{ size: 8, offset: 2 }}
           lg={{ size: 6, offset: 3 }}>
           <h1>Sessions with Morel</h1>
         </Col>
-        <Col 
+        <Col
           xs={{ size: 12, offset: 0 }}
           sm={{ size: 10, offset: 1 }}
           md={{ size: 8, offset: 2 }}

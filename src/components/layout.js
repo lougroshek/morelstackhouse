@@ -6,7 +6,6 @@ import "typeface-muli"
 
 import Header from "./molecules/header/header"
 import Footer from "./molecules/footer/footer"
-import Scripts from "./molecules/scripts"
 import "./../theme/styles.scss"
 import "./layout.scss"
 
@@ -32,7 +31,6 @@ const Layout = ({ location, pageType, children }) => {
       <Header siteTitle={data.site.siteMetadata.title} location={location} menu={data.site.siteMetadata.menu} />
       <main className={`page-type-${pageType ? pageType : 'null'}`}>{children}</main>
       <Footer data={data} />
-      <Scripts />
     </>
   )
 }

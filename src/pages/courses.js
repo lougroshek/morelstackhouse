@@ -1,58 +1,68 @@
 import React from "react"
-import { graphql, StaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import { Row, Col, Button } from 'reactstrap';
 import { MdKeyboardArrowDown } from "react-icons/md";
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import SEO from "../components/atoms/seo"
 import CoursesListBlock from "./../components/molecules/coursesListBlock/coursesListBlock"
 import CoursesTopImage from "../components/atoms/coursesTopImage"
 
-const getEventsData = graphql`
-{
-  allMarkdownRemark(
-    filter: {frontmatter: {type: {eq: "event"}, start_date: {ne: null}}},
-    sort: {
-      fields: [frontmatter___start_date]
-      order: ASC
-    }
-  ) {
-    totalCount
-    edges {
-      node {
-        id
-        frontmatter {
-          city
-          start_date
-          end_date
-          event_image
-          location_title
-          instructor
-          instructor_bio
-          instructor_image
-          state
-          street_address
-          tag
-          title
-          type
-          zip
-          end_time
-          start_time
-          geojson
-          excerpt
+const EventsPage = ({ location }) => {
+
+  const { allMarkdownRemark, placeholderImage } = useStaticQuery(
+    graphql`
+      query {
+        allMarkdownRemark(
+          filter: {frontmatter: {type: {eq: "event"}, start_date: {ne: null}}},
+          sort: {
+            fields: [frontmatter___start_date]
+            order: ASC
+          }
+        ) {
+          totalCount
+          edges {
+            node {
+              id
+              frontmatter {
+                city
+                start_date
+                end_date
+                event_image
+                location_title
+                instructor
+                instructor_bio
+                instructor_image
+                state
+                street_address
+                tag
+                title
+                type
+                zip
+                end_time
+                start_time
+                geojson
+                excerpt
+              }
+              html
+              excerpt(format: PLAIN, pruneLength: 500)
+              fields {
+                slug
+              }
+            }
+          }
         }
-        html
-        excerpt(format: PLAIN, pruneLength: 500)
-        fields {
-          slug
+        placeholderImage: file(relativePath: {eq: "courses-top.jpg"}) {
+          id
+          childImageSharp {
+            original {
+              src
+            }
+          }
         }
       }
-    }
-  }
-}
-`;
-
-const EventsPage = ({ location }) => {
+    `
+  )
 
   const scrollToCourses = () => {
     // const goTo = document.querySelector()
@@ -65,13 +75,21 @@ const EventsPage = ({ location }) => {
     })
   }
 
-  const pageTitle = "Courses";
+  const pageMeta = {
+    title: 'Courses',
+    type: 'courses',
+    location: location,
+    description: null,
+    keywords: `ortho-bionomy, orthbionomy, bodywork, body work, massage, spine, back, gentle, healing, instruction, morel, stackhouse, courses, course, learn`,
+    image: placeholderImage.childImageSharp.original.src,
+    url: `${location.href}`
+  }
 
   return (
-    <Layout location={ location } pageType="courses">
-      <SEO title={pageTitle} />
+    <Layout location={ pageMeta.location } pageType={ pageMeta.type }>
+      <SEO meta={{ ...pageMeta }} />
         <Row className="heading">
-          <Col 
+          <Col
             xs={{ size: 12, offset: 0 }}
             sm={{ size: 10, offset: 1 }}
             >
@@ -115,26 +133,31 @@ const EventsPage = ({ location }) => {
             </div>
           </Col>
         </Row>
-      <StaticQuery
-        query={getEventsData}
-        render={data => (
+        { !!allMarkdownRemark.edges  ?
+          ( (!!allMarkdownRemark.edges.filter(({node}) => { return new Date(node.frontmatter.start_date) >= new Date() }) >= 1) ?
+              <>
+                <Row className="course-list-heading">
+                  <Col
+                    xs={{ size: 12, offset: 0 }}
+                    sm={{ size: 10, offset: 1 }}
+                    >
+                    <h2 name="course_list_target" id="course_list_target">Upcoming Courses</h2>
+                  </Col>
+                </Row>
+                <div className="events-list events-upcoming">
+                  {allMarkdownRemark.edges
+                    // Filter all entries *ahead of* today.
+                    .filter(({node}) => { return new Date(node.frontmatter.start_date) >= new Date() })
+                    .map(({node}) => (
+                      <CoursesListBlock node={node} key={node.id} />
+                  ))}
+                </div>
+              </> : <div className="events-list events-upcoming"><p>No upcoming courses available to display at this time.</p></div>
+        ) : null
+      }
+      { !!allMarkdownRemark.edges  ?
+        ( (!!allMarkdownRemark.edges.filter(({node}) => { return new Date(node.frontmatter.start_date) < new Date() }) >= 1) ?
           <>
-            <Row className="course-list-heading">
-              <Col
-                xs={{ size: 12, offset: 0 }}
-                sm={{ size: 10, offset: 1 }}
-                >
-                <h2 name="course_list_target" id="course_list_target">Upcoming Courses</h2>
-              </Col>
-            </Row>
-            <div className="events-list events-upcoming">
-              {data.allMarkdownRemark.edges
-                // Filter all entries *ahead of* today.
-                .filter(({node}) => { return new Date(node.frontmatter.start_date) >= new Date() })
-                .map(({node}) => (
-                  <CoursesListBlock node={node} key={node.id} />
-              ))}
-            </div>
             <Row className="course-list-heading">
               <Col
                 xs={{ size: 12, offset: 0 }}
@@ -144,17 +167,18 @@ const EventsPage = ({ location }) => {
               </Col>
             </Row>
             <div className="events-list events-past">
-              {data.allMarkdownRemark.edges
+              {allMarkdownRemark.edges
                 // Filter all entries *past* today.
                 .filter(({node}) => { return new Date(node.frontmatter.start_date) < new Date() })
+                // Reverse so most recent date is first.
                 .reverse()
                 .map(({node}) => (
                   <CoursesListBlock node={node} key={node.id} />
               ))}
             </div>
-          </>
-        )}
-      />
+          </> : <div className="events-list events-upcoming"><p>No past courses available to display at this time.</p></div>
+      ) : null
+    }
     </Layout>
   )
 }

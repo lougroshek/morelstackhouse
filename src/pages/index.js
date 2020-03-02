@@ -4,10 +4,11 @@ import { Row, Col } from 'reactstrap';
 import { graphql, useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import SEO from "../components/atoms/seo"
 import HomeBannerImage from "../components/atoms/homeBannerImage"
 
 const IndexPage = ({ location }) => {
+
   const getPageData = useStaticQuery(graphql`
     {
       site {
@@ -27,9 +28,19 @@ const IndexPage = ({ location }) => {
     }
   `)
 
+  const pageMeta = {
+    title: 'Home',
+    type: 'home',
+    location: location,
+    description: null,
+    keywords: `ortho-bionomy, orthbionomy, bodywork, body work, massage, spine, back, gentle, healing, instruction, morel, stackhouse`,
+    image: null,
+    url: `${location.href}`
+  }
+
   return (
-    <Layout location={location} pageType="home">
-      <SEO title="Home" />
+    <Layout location={ pageMeta.location } pageType={ pageMeta.type }>
+      <SEO meta={{ ...pageMeta }} />
       <Row className="jumbotron align-items-center">
         <HomeBannerImage/>
         <Col>

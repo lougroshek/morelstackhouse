@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import Script from 'react-load-script';
 import cleanProps from 'clean-react-props';
-/*eslint no-undef: "warn"*/
+/*eslint no-undef: "off"*/
 
 const EXCLUDE_PROPS = [
   'onClick',

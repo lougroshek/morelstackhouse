@@ -10,7 +10,7 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ meta }) {
   const { site, placeholderImage } = useStaticQuery(
     graphql`
       query {
@@ -37,7 +37,13 @@ function SEO({ description, lang, meta, title }) {
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  const description = meta.description ? meta.description : site.siteMetadata.description;
+  const title = meta.title ? `${meta.title} | ${site.siteMetadata.title}` : site.siteMetadata.title;
+  const lang = meta.lang ? meta.lang : `en`;
+  const url = meta.location.href ? meta.location.href : site.siteMetadata.siteUrl;
+  const keywords = meta.keywords ? meta.keywords : site.siteMetadata.keywords;
+  const image = meta.image ? `${site.siteMetadata.siteUrl}${meta.image}` : `${site.siteMetadata.siteUrl}${placeholderImage.childImageSharp.original.src}`;
+
 
   return (
     <Helmet
@@ -45,15 +51,15 @@ function SEO({ description, lang, meta, title }) {
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`${title}`}
       meta={[
         {
           name: `description`,
-          content: metaDescription,
+          content: description,
         },
         {
           name: `keywords`,
-          content: `${site.siteMetadata.keywords}`,
+          content: keywords,
         },
         {
           property: `og:title`,
@@ -61,7 +67,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: description,
         },
         {
           property: `og:type`,
@@ -69,15 +75,15 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           property: `og:image`,
-          content: `${site.siteMetadata.url}${placeholderImage.childImageSharp.original.src}`,
+          content: image,
         },
         {
           property: `og:url`,
-          content: `${site.siteMetadata.siteUrl}`,
+          content: url,
         },
         {
           property: `fb:app_id`,
-          content: `${site.siteMetadata.facebookAppID}`,
+          content: site.siteMetadata.facebookAppID,
         },
         {
           name: `twitter:card`,
@@ -93,11 +99,11 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: description,
         },
         {
           name: `twitter:image`,
-          content: `${site.siteMetadata.url}${placeholderImage.childImageSharp.original.src}`,
+          content: image,
         },
         {
           name: `twitter:card`,
@@ -109,16 +115,11 @@ function SEO({ description, lang, meta, title }) {
 }
 
 SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
+  meta: {}
 }
 
 SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
+  meta: PropTypes.object.isRequired
 }
 
 export default SEO

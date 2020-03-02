@@ -1,33 +1,45 @@
 import React from 'react'
 import { Row, Col } from 'reactstrap';
-import { graphql, StaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import SEO from "../components/atoms/seo"
 import GoogleMapLink from "./../components/atoms/googleMapLink"
 import GoogleMapComponent from "./../components/atoms/googleMapComponent"
 import ContactForm from './../components/molecules/contactForm/contactForm'
 
-const getLocationData = graphql`
-  {
-    site {
-      siteMetadata {
-        contactLocation
+const ContactPage = ({ location }) => {
+
+  const getLocationData = useStaticQuery(graphql`
+    {
+      site {
+        siteMetadata {
+          contactLocation
+          siteUrl
+        }
       }
     }
-  }
-`
+  `)
 
-const ContactPage = ({ location }) => {
+  const pageMeta = {
+    title: 'Contact',
+    type: 'contact',
+    location: location,
+    description: null,
+    keywords: `ortho-bionomy, orthbionomy, bodywork, body work, massage, spine, back, gentle, healing, instruction, contact, morel, stackhouse`,
+    image: null,
+    url: `${location.href}`
+  }
+
   return (
-    <Layout location={ location } pageType="contact">
-      <SEO title="Contact" />
+    <Layout location={ pageMeta.location } pageType={ pageMeta.type }>
+      <SEO meta={{ ...pageMeta }} />
       <Row className="heading">
         <Col
           xs={{ size: 12, offset: 0 }}
           sm={{ size: 10, offset: 1 }}
           >
-          <h1>Contact</h1>
+          <h1>{pageMeta.title}</h1>
         </Col>
       </Row>
         <div className="row">
@@ -36,18 +48,11 @@ const ContactPage = ({ location }) => {
             <ContactForm />
           </div>
           <div className="col-address col-12 col-sm-10 offset-sm-1 col-lg-5 offset-lg-0">
-            <StaticQuery
-              query={getLocationData}
-              render={data => (
-                <>
-                  <span className="address">Lakeside Street</span>
-                  <span className="address">Madison, WI, 53711
-                    <GoogleMapLink geojson={data.site.siteMetadata.contactLocation} />
-                  </span>
-                  <GoogleMapComponent input={data.site.siteMetadata.contactLocation} />
-                </>
-              )}
-            />
+            <span className="address">Lakeside Street</span>
+            <span className="address">Madison, WI, 53711
+              <GoogleMapLink geojson={getLocationData.site.siteMetadata.contactLocation} />
+            </span>
+            <GoogleMapComponent input={getLocationData.site.siteMetadata.contactLocation} />
           </div>
         </div>
     </Layout>

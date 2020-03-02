@@ -6,7 +6,6 @@ import { Row, Col } from 'reactstrap';
 import defaultImg from "./../../../images/placeholder.png"
 import CoursesImage from "./../../atoms/coursesImage"
 import GoogleMapLink from "./../../atoms/googleMapLink"
-import "./coursesListBlock.scss"
 
 const CoursesListBlock = ({node}) => {
 

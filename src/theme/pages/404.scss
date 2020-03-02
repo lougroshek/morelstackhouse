@@ -1,11 +1,8 @@
 main.page-type-404 {
-  // padding-top: 3rem;
+  min-height: 50vh;
   .heading {
-    padding-top: 3rem;
+    padding-top: 5rem;
     padding-bottom: 3rem;
-    @include media-breakpoint-up(lg) {
-      padding-top: 5rem;
-    }
     h1 {
       text-align: center;
     }

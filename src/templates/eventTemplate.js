@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment'
-import { graphql } from "gatsby"
+import { graphql, StaticQuery, useStaticQuery } from "gatsby"
 import { Row, Col } from 'reactstrap';
 import AddToCalendar from 'react-add-to-calendar';
 
@@ -9,9 +9,7 @@ import defaultImg from "./../images/placeholder.png"
 import CoursesImage from "./../components/atoms/coursesImage"
 import BioImage from "./../components/atoms/bioImage"
 import Layout from './../components/layout'
-import SEO from "../components/seo"
-
-import './eventTemplate.scss'
+import SEO from "../components/atoms/seo"
 
 const EventTemplate = ({ data: course , location }) => {
 
@@ -81,9 +79,31 @@ const EventTemplate = ({ data: course , location }) => {
       return false;
     }
   }
-    return (
-    <Layout location={location} pageType="course">
-      <SEO title={course.markdownRemark.frontmatter.title} />
+
+  const pageImages = course.allImageSharp.edges.filter(({node}) => {
+    // If source contains the name in the markdown front matter, send back grayscale src
+    if (node.resize.src.indexOf(course.markdownRemark.frontmatter.event_image) >= 0) {
+      return true;
+    } else {
+      return false;
+    }
+  })
+
+  const pageMeta = {
+    title: course.markdownRemark.frontmatter.title,
+    type: 'course',
+    location: location,
+    description: course.markdownRemark.frontmatter.excerpt,
+    keywords: `ortho-bionomy, orthbionomy, bodywork, body work, massage, spine, back, gentle, healing, instruction, course, morel, stackhouse`,
+    image: pageImages[0].node.resize.src,
+    url: `${location.href}`
+  }
+
+  console.log('pageMeta', pageMeta);
+
+  return (
+    <Layout location={ pageMeta.location } pageType={ pageMeta.type }>
+      <SEO meta={{ ...pageMeta }} />
         <Row className="heading">
           <Col
             xs={{ size: 12, offset: 0 }}
@@ -130,13 +150,11 @@ const EventTemplate = ({ data: course , location }) => {
                 <h4 className="testimonials-heading">What Others have Said About This Work</h4> : null }
               { !!course.markdownRemark.frontmatter.testimonials ? course.markdownRemark.frontmatter.testimonials.map((data, index) => {
                   return (
-                    <>
-                      <div className="testimonial" key={`course_testimonial_${index}`}>
-                        <div className="testimonial-text">
-                          <p>{data}</p>
-                        </div>
+                    <div className="testimonial" key={`course_testimonial_${index}`}>
+                      <div className="testimonial-text">
+                        <p>{data}</p>
                       </div>
-                    </>
+                    </div>
                   )
                 }) : null
               }
@@ -166,33 +184,43 @@ const EventTemplate = ({ data: course , location }) => {
 }
 
 export const course = graphql`
-query ($slug: String!) {
-  markdownRemark(fields: {slug: {eq: $slug}}) {
-    id
-    html
-    frontmatter {
-      city
-      end_date
-      end_time
-      time_zone
-      event_image
-      excerpt
-      geojson
-      instructor
-      instructor_bio
-      instructor_image
-      testimonials
-      location_title
-      start_date
-      start_time
-      state
-      street_address
-      tag
-      title
-      type
-      zip
+  query ($slug: String!) {
+    markdownRemark(fields: {slug: {eq: $slug}}) {
+      id
+      html
+      frontmatter {
+        city
+        end_date
+        end_time
+        time_zone
+        event_image
+        excerpt
+        geojson
+        instructor
+        instructor_bio
+        instructor_image
+        testimonials
+        location_title
+        start_date
+        start_time
+        state
+        street_address
+        tag
+        title
+        type
+        zip
+      }
+    }
+    allImageSharp {
+      edges {
+        node {
+          resize(grayscale: true, width: 1200) {
+            src
+          }
+        }
+      }
     }
   }
-}`;
+`;
 
 export default EventTemplate
