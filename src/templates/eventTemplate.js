@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment'
-import { graphql, StaticQuery, useStaticQuery } from "gatsby"
+import { graphql } from "gatsby"
 import { Row, Col } from 'reactstrap';
 import AddToCalendar from 'react-add-to-calendar';
 

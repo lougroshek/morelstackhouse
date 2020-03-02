@@ -55,7 +55,7 @@ const EventsPage = ({ location }) => {
         placeholderImage: file(relativePath: {eq: "courses-top.jpg"}) {
           id
           childImageSharp {
-            original {
+            resize(grayscale: true, width: 1200) {
               src
             }
           }
@@ -81,7 +81,7 @@ const EventsPage = ({ location }) => {
     location: location,
     description: null,
     keywords: `ortho-bionomy, orthbionomy, bodywork, body work, massage, spine, back, gentle, healing, instruction, morel, stackhouse, courses, course, learn`,
-    image: placeholderImage.childImageSharp.original.src,
+    image: placeholderImage.childImageSharp.resize.src,
     url: `${location.href}`
   }
 
