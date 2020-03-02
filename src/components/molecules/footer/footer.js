@@ -34,6 +34,7 @@ const Footer = ({data}) => {
     ['scroll', 'resize', 'load'].forEach(function(e) {
       window.addEventListener(e, logoSizeHandler);
     })
+    logoSizeHandler();
   })
 
   return (

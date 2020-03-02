@@ -1,7 +1,8 @@
 import React from "react"
-import GoogleMap, { Marker } from 'react-maps-google'
+import { Marker } from 'react-maps-google'
 
 import "./googleMapComponent.scss"
+import GoogleMap from './googleMap'
 
 const GoogleMapComponent = ({input}) => {
 
@@ -41,7 +42,9 @@ const GoogleMapComponent = ({input}) => {
   }
 
   return (
-    <GoogleMap className="event-google-map" apiKey={process.env.GATSBY_GOOGLE_MAPS_API_KEY}
+    <GoogleMap className="event-google-map"
+      apiKey={process.env.GATSBY_GOOGLE_MAPS_API_KEY}
+      async={true}
       options={getMapOptions(input)}>
       <Marker
         position={getGeoJSON(input)}

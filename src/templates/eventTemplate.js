@@ -3,7 +3,6 @@ import moment from 'moment'
 import { graphql } from "gatsby"
 import { Row, Col } from 'reactstrap';
 import AddToCalendar from 'react-add-to-calendar';
-import 'react-add-to-calendar/dist/react-add-to-calendar.css'
 
 import GoogleMapComponent from "./../components/atoms/googleMapComponent"
 import defaultImg from "./../images/placeholder.png"

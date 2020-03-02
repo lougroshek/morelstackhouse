@@ -111,6 +111,7 @@
     display: inline-block;
     margin-top: 5px;
     margin-bottom: 10px;
+    position: relative;
     // width: auto;
     .react-add-to-calendar__button {
       display: inline-block;
@@ -132,8 +133,18 @@
       width: 100%;
       z-index: 3000;
       top: 42px;
+      position: absolute;
+      display: block;
+      left: 0;
+      width: 99%;
+      padding: 5px 0 5px 8px;
+      box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.15);
+      border: 1px solid #a8a8a8;
+      background-color: #fff;
+      text-align: left;
       ul {
         padding-left: 0.85rem;
+        list-style-type: none;
         li {
           text-transform: uppercase;
           padding: 5px 0;

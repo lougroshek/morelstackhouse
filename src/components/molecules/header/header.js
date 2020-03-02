@@ -42,6 +42,7 @@ const Header = ({ siteTitle, menu, location }) => {
     ['scroll', 'resize', 'load'].forEach(function(e) {
       window.addEventListener(e, logoSizeHandler);
     })
+    logoSizeHandler()
   })
 
   menu.forEach((item, index) => {
