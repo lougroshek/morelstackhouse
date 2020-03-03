@@ -93,7 +93,8 @@
     margin-right: auto;
     @include media-breakpoint-up(md) {
       float: left;
-      margin-right: 1rem;
+      margin-right: 2rem;
+      shape-outside: circle(50%);
     }
   }
   .event-google-map {

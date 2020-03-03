@@ -15,7 +15,7 @@ zip: "53705"
 event_image: "course-006" # cropped to 16:9 and exported 1600px wide
 instructor: "Morel Stackhouse"
 instructor_image: "instructor-morel-01.jpg" # cropped to square
-instructor_bio: "Morel Stackhouse is a Registered Advanced Instructor with the Society of Ortho-Bionomy International. She began her study of Ortho-Bionomy in 1984 and was fortunate to have studied with Arthur Lincoln Pauls D.O., the system's Founder. Morel has been teaching throughout the US since 1989. She enjoys introducing this bodywork system to others and working with students to develop their skill and confidence as they grow with the work. She is approved by the National Certification Board for Therapeutic Massage and Bodywork (NCBTMB) as a Continuing Education Approved Provider."
+instructor_bio: "<p>Morel Stackhouse is a Registered Advanced Instructor with the Society of Ortho-Bionomy International. She began her study of Ortho-Bionomy in 1984 and was fortunate to have studied with Arthur Lincoln Pauls D.O., the system's Founder.</p><p>Morel has been teaching throughout the US since 1989. She enjoys introducing this bodywork system to others and working with students to develop their skill and confidence as they grow with the work. She is approved by the National Certification Board for Therapeutic Massage and Bodywork (NCBTMB) as a Continuing Education Approved Provider.</p>"
 testimonials:
   - This was an excellent learning experience and I know I will be able to incorporate this into my practice.
   - An invaluable experience!

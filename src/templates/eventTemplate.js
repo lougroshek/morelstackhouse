@@ -99,8 +99,6 @@ const EventTemplate = ({ data: course , location }) => {
     url: `${location.href}`
   }
 
-  console.log('pageMeta', pageMeta);
-
   return (
     <Layout location={ pageMeta.location } pageType={ pageMeta.type }>
       <SEO meta={{ ...pageMeta }} />
