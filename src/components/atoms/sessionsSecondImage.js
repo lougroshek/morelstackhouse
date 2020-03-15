@@ -18,7 +18,7 @@ const SessionsSecondImage = () => {
     query {
       placeholderImage: file(relativePath: { eq: "sessions-hands-on-foot.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 1000) {
+          fluid(maxWidth: 1000, grayscale: true) {
             ...GatsbyImageSharpFluid
           }
         }
