@@ -18,7 +18,7 @@ const CoursesTopImage = () => {
     query {
       placeholderImage: file(relativePath: { eq: "courses-top-lg.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 1600, grayscale: true, quality: 80) {
+          fluid(maxWidth: 1600, grayscale: true, quality: 75) {
             ...GatsbyImageSharpFluid
           }
         }
