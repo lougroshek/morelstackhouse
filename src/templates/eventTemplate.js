@@ -99,6 +99,17 @@ const EventTemplate = ({ data: course , location }) => {
     url: `${location.href}`
   }
 
+  const grayscale = () => {
+    // console.log('grayscale');
+    const now = moment();
+    const eventDate = moment(course.markdownRemark.frontmatter.start_date);
+    if (now.diff(eventDate) > 0) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   return (
     <Layout location={ pageMeta.location } pageType={ pageMeta.type }>
       <SEO meta={{ ...pageMeta }} />
@@ -116,7 +127,7 @@ const EventTemplate = ({ data: course , location }) => {
             xs={{ size: 12, offset: 0, order: 1 }}
             sm={{ size: 10, offset: 1 }}
             md={{ size: 6, offset: 3 }}
-            className="event-img">
+            className={`event-img ${!!grayscale() ? `grayscale` : null}`}>
             <CoursesImage
               alt={`Event image for ${course.markdownRemark.frontmatter.title}, ${course.markdownRemark.frontmatter.start_date}`}
               filename={course.markdownRemark.frontmatter.event_image ? course.markdownRemark.frontmatter.event_image : defaultImg}
