@@ -2,8 +2,8 @@
 type: "event"
 tag: "course" # course or free-lecture
 title: "Study Group on Trauma Resourcing"
-start_date: "2020-03-13"
-end_date: "2020-03-13"
+start_date: "2020-06-21"
+end_date: "2020-06-21"
 start_time: "3:00 PM"
 end_time: "6:00 PM"
 time_zone: "-05:00"

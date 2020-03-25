@@ -178,7 +178,7 @@ class GoogleMap extends Component {
       <React.Fragment>
         {scriptLoaded === false && (
           <Script
-            url={`https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=reactMapsGoogleInit`}
+            url={`https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=reactMapsGoogleInit&libraries=places`}
             onLoad={this.onScriptLoad}
             async={this.props.async ? `async` : false}
             defer={this.props.defer ? `defer` : false}
