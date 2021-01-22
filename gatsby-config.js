@@ -1,4 +1,4 @@
-require("dotenv").config({
+require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
@@ -18,29 +18,28 @@ module.exports = {
     menu: [
       {
         title: `Sessions`,
-        path:  `/sessions/`
+        path: `/sessions/`,
       },
       {
         title: `Courses`,
-        path:  `/courses/`
+        path: `/courses/`,
       },
       {
         title: `ORTHO-BIONOMY®`,
-        path:  `/ortho-bionomy/`
+        path: `/ortho-bionomy/`,
       },
       {
         title: `Free Lectures`,
-        path:  `/free-lectures/`
+        path: `/free-lectures/`,
       },
       {
         title: `Contact`,
-        path:  `/contact/`
-      }
-    ]
+        path: `/contact/`,
+      },
+    ],
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-env-variables`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -85,7 +84,7 @@ module.exports = {
         // Setting this parameter is also optional
         respectDNT: true,
         // Avoids sending pageview hits from custom paths
-        exclude: ["/content/**", "/images/**"],
+        exclude: ['/content/**', '/images/**'],
         // Delays sending pageview hits on route update (in milliseconds)
         pageTransitionDelay: 0,
         // Enables Google Optimize using your container Id
@@ -107,13 +106,13 @@ module.exports = {
         sitemap: 'https://morelstackhouse.com/sitemap.xml',
         env: {
           development: {
-            policy: [{ userAgent: '*', disallow: ['/'] }]
+            policy: [{ userAgent: '*', disallow: ['/'] }],
           },
           production: {
-            policy: [{ userAgent: '*', allow: '/' }]
-          }
-        }
-      }
+            policy: [{ userAgent: '*', allow: '/' }],
+          },
+        },
+      },
     },
     {
       resolve: `gatsby-plugin-sitemap`,
@@ -140,15 +139,15 @@ module.exports = {
           }
         }`,
         serialize: ({ site, allSitePage }) =>
-        allSitePage.edges.map(edge => {
-          return {
-            url: site.siteMetadata.siteUrl + edge.node.path,
-            changefreq: `daily`,
-            priority: 0.7,
-          }
-        })
-      }
-    }
+          allSitePage.edges.map(edge => {
+            return {
+              url: site.siteMetadata.siteUrl + edge.node.path,
+              changefreq: `daily`,
+              priority: 0.7,
+            }
+          }),
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
