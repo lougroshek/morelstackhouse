@@ -21,7 +21,7 @@
     "gatsby-plugin-sharp": "^2.13.1",
     "gatsby-plugin-sitemap": "^2.11.0",
     "gatsby-source-filesystem": "^2.10.0",
-    "gatsby-transformer-remark": "^2.15.0",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^2.11.0",
     "intersection-observer": "^0.7.0",
     "load-google-maps-api": "^2.0.2",
